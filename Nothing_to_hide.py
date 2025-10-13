@@ -3,9 +3,13 @@ import os
 import sys
 import random
 import select
-import termios
-import tty
 import threading
+# Unix-only imports - not available on Windows
+if os.name != 'nt':
+    import termios
+    import tty
+
+
 
 # Try to import pygame for sound
 try:
@@ -155,6 +159,133 @@ CONVERSATIONS = [
         "has_secret": True,
         "secret": "Medical research fraud - hiding negative trial results"
     },
+    {
+        "id": 4,
+        "participants": ["Agent Smith", "Agent Jones"],
+        "messages": [
+            ("Agent Smith", "Follow-up on the Alice and Bob case."),
+            ("Agent Jones", "Found more evidence. Bank transactions match perfectly."),
+            ("Agent Smith", "How much did they steal?"),
+            ("Agent Jones", "Over two million. Spanning three years."),
+            ("Agent Smith", "Prepare the arrest warrants."),
+            ("Agent Jones", "Already done. Moving in tomorrow morning.")
+        ],
+        "has_secret": True,
+        "secret": "Follow-up investigation - building case against financial fraudsters"
+    },
+    {
+        "id": 5,
+        "participants": ["Detective Ray", "Captain Lee"],
+        "messages": [
+            ("Detective Ray", "Marcus and Julia have been detained at the pier."),
+            ("Captain Lee", "Good work. What about the cargo?"),
+            ("Detective Ray", "Seized. All of it. Contraband electronics worth millions."),
+            ("Captain Lee", "And the bribed inspector?"),
+            ("Detective Ray", "In custody. He's already talking."),
+            ("Captain Lee", "Finally. This smuggling ring is done.")
+        ],
+        "has_secret": True,
+        "secret": "Follow-up investigation - smugglers caught with evidence"
+    },
+    {
+        "id": 6,
+        "participants": ["Inspector Kate", "Director Webb"],
+        "messages": [
+            ("Inspector Kate", "Dr. Chen and Dr. Patel's licenses have been revoked."),
+            ("Director Webb", "As they should be. Research fraud puts lives at risk."),
+            ("Inspector Kate", "The trial has been shut down. All patients notified."),
+            ("Director Webb", "What about criminal charges?"),
+            ("Inspector Kate", "Filed this morning. They'll face trial."),
+            ("Director Webb", "Good. We can't tolerate this deception.")
+        ],
+        "has_secret": True,
+        "secret": "Follow-up investigation - medical fraud consequences and prosecution"
+    },
+    {
+        "id": 7,
+        "participants": ["Victor", "Nina"],
+        "messages": [
+            ("Victor", "The database breach went undetected."),
+            ("Nina", "How many records did you get?"),
+            ("Victor", "All of them. Social security, credit cards, everything."),
+            ("Nina", "Perfect. When do we sell?"),
+            ("Victor", "Tonight. Buyer's waiting on the dark web."),
+            ("Nina", "This is our biggest score yet.")
+        ],
+        "has_secret": True,
+        "secret": "Data theft and identity fraud operation"
+    },
+    {
+        "id": 8,
+        "participants": ["Richard", "Melissa"],
+        "messages": [
+            ("Richard", "The witness saw everything."),
+            ("Melissa", "Can we make them reconsider their testimony?"),
+            ("Richard", "I've made it clear what happens to people who talk."),
+            ("Melissa", "Will they stay quiet?"),
+            ("Richard", "They know what's at stake. Their family, their business..."),
+            ("Melissa", "Good. We can't afford any loose ends.")
+        ],
+        "has_secret": True,
+        "secret": "Witness intimidation and obstruction of justice"
+    },
+    {
+        "id": 9,
+        "participants": ["Carlos", "Diana"],
+        "messages": [
+            ("Carlos", "The factory inspection is next week."),
+            ("Diana", "Hide the violations. Same as always."),
+            ("Carlos", "What about the chemical spill last month?"),
+            ("Diana", "No records exist. We disposed of everything."),
+            ("Carlos", "The workers who got sick?"),
+            ("Diana", "Paid them off. They signed NDAs.")
+        ],
+        "has_secret": True,
+        "secret": "Environmental crimes and worker safety violations coverup"
+    },
+    {
+        "id": 10,
+        "participants": ["Frank", "Gloria"],
+        "messages": [
+            ("Frank", "The votes have been counted."),
+            ("Gloria", "And our modifications?"),
+            ("Frank", "Undetectable. Thousands of ballots 'adjusted'."),
+            ("Gloria", "Our candidate won by how much?"),
+            ("Frank", "Eight percent. Looks completely legitimate."),
+            ("Gloria", "Democracy in action.")
+        ],
+        "has_secret": True,
+        "secret": "Election fraud and vote manipulation"
+    },
+    {
+        "id": 11,
+        "participants": ["Kevin", "Laura"],
+        "messages": [
+            ("Kevin", "The insider information was accurate."),
+            ("Laura", "How much did we make on the stock trade?"),
+            ("Kevin", "Three million. Before the merger was announced."),
+            ("Laura", "Anyone suspect anything?"),
+            ("Kevin", "We used offshore accounts. Untraceable."),
+            ("Laura", "Let's do it again next quarter.")
+        ],
+        "has_secret": True,
+        "secret": "Insider trading and securities fraud"
+    },
+    {
+        "id": 12,
+        "participants": ["Thomas", "Rachel"],
+        "messages": [
+            ("Thomas", "The building codes were... flexible this time."),
+            ("Rachel", "The inspectors accepted our donation?"),
+            ("Thomas", "Very generously. They approved everything."),
+            ("Rachel", "Even the foundation issues?"),
+            ("Thomas", "Everything. The building opens next month."),
+            ("Rachel", "Saved us two million in repairs.")
+        ],
+        "has_secret": True,
+        "secret": "Construction fraud and bribery of building inspectors"
+    },
+    
     # === INNOCENT - Normal conversations ===
     {
         "id": 13,
@@ -182,6 +313,147 @@ CONVERSATIONS = [
         "has_secret": False,
         "secret": None
     },
+    {
+        "id": 15,
+        "participants": ["Lisa", "Tom"],
+        "messages": [
+            ("Lisa", "Did you pick up the groceries?"),
+            ("Tom", "Yes, everything on the list."),
+            ("Lisa", "Even the milk?"),
+            ("Tom", "Two gallons, like you asked."),
+            ("Lisa", "You're the best. Thanks honey."),
+            ("Tom", "No problem. What's for dinner?")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 16,
+        "participants": ["Amy", "Chris"],
+        "messages": [
+            ("Amy", "How was your day at work?"),
+            ("Chris", "Long but productive. Finished the presentation."),
+            ("Amy", "That's great! Want to watch a movie tonight?"),
+            ("Chris", "Sounds perfect. Your turn to pick."),
+            ("Amy", "I'm thinking comedy. We need a laugh."),
+            ("Chris", "I'm in!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 17,
+        "participants": ["David", "Sophie"],
+        "messages": [
+            ("David", "The kids want pizza for dinner."),
+            ("Sophie", "Again? We had pizza three days ago!"),
+            ("David", "I know, but they're very convincing."),
+            ("Sophie", "Fine, but they're eating vegetables tomorrow."),
+            ("David", "Deal. I'll order the usual?"),
+            ("Sophie", "Yes, and get extra breadsticks.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 18,
+        "participants": ["Beth", "Ryan"],
+        "messages": [
+            ("Beth", "Remember we have the dentist appointment tomorrow."),
+            ("Ryan", "What time again?"),
+            ("Beth", "2 PM. Don't be late like last time."),
+            ("Ryan", "I won't! I already set three alarms."),
+            ("Beth", "Good. I also have a cleaning appointment."),
+            ("Ryan", "See you there then!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 19,
+        "participants": ["Hannah", "Mike"],
+        "messages": [
+            ("Hannah", "Can you help me move the couch this weekend?"),
+            ("Mike", "Sure! What time works for you?"),
+            ("Hannah", "Saturday morning? Around 10?"),
+            ("Mike", "Perfect. I'll bring my truck."),
+            ("Hannah", "Thanks! I'll buy lunch afterwards."),
+            ("Mike", "You've got yourself a deal!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 20,
+        "participants": ["Olivia", "Ethan"],
+        "messages": [
+            ("Olivia", "Did you feed the dog?"),
+            ("Ethan", "Yes, and took him for a walk."),
+            ("Olivia", "You're a lifesaver. I was running late."),
+            ("Ethan", "No worries. Max was happy to see me."),
+            ("Olivia", "He always is. Thanks again!"),
+            ("Ethan", "Anytime!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 21,
+        "participants": ["Grace", "Noah"],
+        "messages": [
+            ("Grace", "What do you want for your birthday?"),
+            ("Noah", "I don't know. Maybe some books?"),
+            ("Grace", "You always say books. Something else?"),
+            ("Noah", "Okay, maybe that video game I mentioned?"),
+            ("Grace", "Now we're talking! I'll get it for you."),
+            ("Noah", "Thanks! You're the best sister ever!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 22,
+        "participants": ["Jessica", "Andrew"],
+        "messages": [
+            ("Jessica", "The garden is looking beautiful this year."),
+            ("Andrew", "Thanks! The tomatoes are coming in great."),
+            ("Jessica", "Should we plant more next season?"),
+            ("Andrew", "Definitely. Maybe add some peppers too?"),
+            ("Jessica", "Great idea. I'll get seeds this fall."),
+            ("Andrew", "Perfect. This is so relaxing.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 23,
+        "participants": ["Nicole", "Brandon"],
+        "messages": [
+            ("Nicole", "Did you finish your homework?"),
+            ("Brandon", "Almost done. Just math left."),
+            ("Nicole", "Need any help?"),
+            ("Brandon", "Nah, I got it. Thanks though!"),
+            ("Nicole", "Okay. Dinner in 20 minutes."),
+            ("Brandon", "Sounds good!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 24,
+        "participants": ["Samantha", "Jason"],
+        "messages": [
+            ("Samantha", "Movie night Friday?"),
+            ("Jason", "Yes! What are we watching?"),
+            ("Samantha", "That new superhero film just came out."),
+            ("Jason", "Perfect. I'll get the tickets."),
+            ("Samantha", "I'll bring the snacks!"),
+            ("Jason", "Best Friday plans ever!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    
     # === FALSE POSITIVES - Sound suspicious but innocent ===
     {
         "id": 25,
@@ -193,6 +465,244 @@ CONVERSATIONS = [
             ("Jake", "Better not. You know how he can't keep secrets."),
             ("Sarah", "Right. The fewer people who know, the better."),
             ("Mike", "My lips are sealed. This will be perfect!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 26,
+        "participants": ["Detective Maria", "Officer James"],
+        "messages": [
+            ("Detective Maria", "The suspect is in interrogation room 3."),
+            ("Officer James", "Has he confessed yet?"),
+            ("Detective Maria", "Not yet. But we have enough evidence."),
+            ("Officer James", "What about his alibi?"),
+            ("Detective Maria", "Doesn't check out. We've got him."),
+            ("Officer James", "Good. Justice will be served.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 27,
+        "participants": ["Eric", "Michelle"],
+        "messages": [
+            ("Eric", "Did you hide the engagement ring?"),
+            ("Michelle", "Yes! In the closet behind the shoes."),
+            ("Eric", "Perfect. She'll never look there."),
+            ("Michelle", "When are you proposing?"),
+            ("Eric", "This Saturday at the restaurant."),
+            ("Michelle", "She's going to be so surprised!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 28,
+        "participants": ["Dr. Stevens", "Nurse Karen"],
+        "messages": [
+            ("Dr. Stevens", "The surgery is scheduled for 6 AM tomorrow."),
+            ("Nurse Karen", "Do we have all the equipment ready?"),
+            ("Dr. Stevens", "Yes, everything's sterilized and prepared."),
+            ("Nurse Karen", "Patient has been informed of all risks?"),
+            ("Dr. Stevens", "Consent forms signed. We're good to go."),
+            ("Nurse Karen", "Excellent. I'll be there early.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 29,
+        "participants": ["Alex", "Jordan"],
+        "messages": [
+            ("Alex", "The escape room was booked for Friday!"),
+            ("Jordan", "Nice! Which theme did you pick?"),
+            ("Alex", "The prison break one. It's supposed to be hard."),
+            ("Jordan", "Perfect. We need a challenge."),
+            ("Alex", "Think we can break the record?"),
+            ("Jordan", "Let's find out!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 30,
+        "participants": ["Author Rebecca", "Editor Dan"],
+        "messages": [
+            ("Author Rebecca", "The murder mystery plot has a major twist."),
+            ("Editor Dan", "Tell me about the victim."),
+            ("Author Rebecca", "Found dead in chapter 3. Poisoned."),
+            ("Editor Dan", "And the killer?"),
+            ("Author Rebecca", "The reader won't guess. It's the butler!"),
+            ("Editor Dan", "Classic! Love it!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 31,
+        "participants": ["Tyler", "Megan"],
+        "messages": [
+            ("Tyler", "The heist scene needs more explosions."),
+            ("Megan", "This is for our film project, right?"),
+            ("Tyler", "Yes! The bank robbery sequence."),
+            ("Megan", "We need permission to film downtown."),
+            ("Tyler", "Already got the permits. We shoot Saturday."),
+            ("Megan", "This is going to look so cool!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 32,
+        "participants": ["Chef Antonio", "Sous Chef Marie"],
+        "messages": [
+            ("Chef Antonio", "We're eliminating three items from the menu."),
+            ("Sous Chef Marie", "Which ones aren't selling?"),
+            ("Chef Antonio", "The pasta, the fish, and the dessert special."),
+            ("Sous Chef Marie", "Should we destroy the remaining ingredients?"),
+            ("Chef Antonio", "Donate them. No waste in my kitchen."),
+            ("Sous Chef Marie", "Good call. I'll handle it.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 33,
+        "participants": ["Game Master Joel", "Player Sam"],
+        "messages": [
+            ("Game Master Joel", "Your character enters the dungeon."),
+            ("Player Sam", "I want to ambush the guards."),
+            ("Game Master Joel", "Roll for stealth. You need above 15."),
+            ("Player Sam", "Got an 18! I take them out silently."),
+            ("Game Master Joel", "Success! You find a key and a secret passage."),
+            ("Player Sam", "This campaign is amazing!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 34,
+        "participants": ["Coach Williams", "Assistant Coach Lee"],
+        "messages": [
+            ("Coach Williams", "We need to eliminate the other team's offense."),
+            ("Assistant Coach Lee", "What's the strategy?"),
+            ("Coach Williams", "Aggressive defense. Shut down their star player."),
+            ("Assistant Coach Lee", "Should we use the blitz play?"),
+            ("Coach Williams", "Yes. Keep the pressure on all game."),
+            ("Assistant Coach Lee", "They won't know what hit them!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 35,
+        "participants": ["Lawyer Patricia", "Client John"],
+        "messages": [
+            ("Lawyer Patricia", "Your divorce settlement looks favorable."),
+            ("Client John", "Will I get custody of the kids?"),
+            ("Lawyer Patricia", "Joint custody. 50-50 split."),
+            ("Client John", "And the house?"),
+            ("Lawyer Patricia", "You keep it. She gets the vacation home."),
+            ("Client John", "Fair enough. When do we sign?")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 36,
+        "participants": ["CEO Jennifer", "CFO Mark"],
+        "messages": [
+            ("CEO Jennifer", "We're laying off 50 employees next quarter."),
+            ("CFO Mark", "Due to the merger?"),
+            ("CEO Jennifer", "Yes. Redundant positions need to be eliminated."),
+            ("CFO Mark", "Severance packages ready?"),
+            ("CEO Jennifer", "Legal is finalizing them. All above board."),
+            ("CFO Mark", "Unfortunate but necessary for the business.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 37,
+        "participants": ["Teacher Linda", "Principal Rogers"],
+        "messages": [
+            ("Teacher Linda", "We need to address the cheating incident."),
+            ("Principal Rogers", "What happened exactly?"),
+            ("Teacher Linda", "Three students copied answers on the final exam."),
+            ("Principal Rogers", "Do you have proof?"),
+            ("Teacher Linda", "Yes, identical wrong answers. Very obvious."),
+            ("Principal Rogers", "I'll call their parents. Zero tolerance policy.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 38,
+        "participants": ["Zoe", "Marcus"],
+        "messages": [
+            ("Zoe", "The concert tickets sold out so fast!"),
+            ("Marcus", "I know! I managed to grab two though."),
+            ("Zoe", "You're amazing! What time should I meet you?"),
+            ("Marcus", "Doors open at 7. Let's get there early."),
+            ("Zoe", "Definitely. This band is incredible live!"),
+            ("Marcus", "Can't wait!")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 39,
+        "participants": ["Accountant Steve", "Client Paula"],
+        "messages": [
+            ("Accountant Steve", "Your tax return is ready for review."),
+            ("Client Paula", "Any deductions I should know about?"),
+            ("Accountant Steve", "Yes, home office and business expenses saved you quite a bit."),
+            ("Client Paula", "Is everything legal and documented?"),
+            ("Accountant Steve", "Absolutely. All receipts filed and verified."),
+            ("Client Paula", "Perfect. Send it over for my signature.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 40,
+        "participants": ["Manager Brian", "Employee Tiffany"],
+        "messages": [
+            ("Manager Brian", "We're executing the new marketing campaign next week."),
+            ("Employee Tiffany", "Should I eliminate the old promotional materials?"),
+            ("Manager Brian", "Yes, destroy all the old flyers and posters."),
+            ("Employee Tiffany", "What about the digital assets?"),
+            ("Manager Brian", "Archive them. We might reference them later."),
+            ("Employee Tiffany", "Got it. I'll take care of it today.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 41,
+        "participants": ["Veterinarian Anne", "Pet Owner Craig"],
+        "messages": [
+            ("Veterinarian Anne", "Your dog needs surgery to remove the tumor."),
+            ("Pet Owner Craig", "Is it serious?"),
+            ("Veterinarian Anne", "It's benign, but we should take it out soon."),
+            ("Pet Owner Craig", "What's the recovery time?"),
+            ("Veterinarian Anne", "Two weeks. He'll be good as new."),
+            ("Pet Owner Craig", "Okay. Let's schedule it.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 42,
+        "participants": ["IT Manager Derek", "Security Officer Kim"],
+        "messages": [
+            ("IT Manager Derek", "I'm wiping all the old hard drives today."),
+            ("Security Officer Kim", "Make sure everything is properly destroyed."),
+            ("IT Manager Derek", "Using military-grade data destruction software."),
+            ("Security Officer Kim", "What about physical destruction?"),
+            ("IT Manager Derek", "Shredding them after. No data recovery possible."),
+            ("Security Officer Kim", "Excellent. Company policy requires it.")
         ],
         "has_secret": False,
         "secret": None
@@ -629,7 +1139,7 @@ def main():
         
         total_score = 0
         conversations_per_day = 6
-        total_days = 6  # 6 days total
+        total_days = 6  # 5 days total
         
         # Process conversations
         for day in range(1, total_days + 1):
