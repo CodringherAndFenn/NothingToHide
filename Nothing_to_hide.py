@@ -635,49 +635,52 @@ def main():
         for day in range(1, total_days + 1):
             day_flagged_count = 0
             day_conversations = []
-            
-            # Build day's conversation list
-            if day == 1:
-                # Day 1: conversation 1 must be shown
-                day_conversations.append(conv_1)
+    
+        # Build day's conversation list
+        if day == 1:
+            # Day 1: conversation 1 must be shown
+            day_conversations.append(conv_1)
+            day_conversations.extend(other_convs[:5])
+            other_convs = other_convs[5:]
+        elif day == 2:
+            # Day 2: conversation 2 must be shown
+            day_conversations.append(conv_2)
+            day_conversations.extend(other_convs[:5])
+            other_convs = other_convs[5:]
+        elif day == 3:
+            # Day 3: conversation 3 must be shown
+            day_conversations.append(conv_3)
+            day_conversations.extend(other_convs[:5])
+            other_convs = other_convs[5:]
+        elif day == 4:
+            # Day 4: show conversation 4 if conversation 1 was flagged correctly
+            if flagged_correctly[1] and conv_4:
+                day_conversations.append(conv_4)
                 day_conversations.extend(other_convs[:5])
                 other_convs = other_convs[5:]
-            elif day == 2:
-                # Day 2: conversation 2 must be shown
-                day_conversations.append(conv_2)
-                day_conversations.extend(other_convs[:5])
-                other_convs = other_convs[5:]
-            elif day == 3:
-                # Day 3: conversation 3 must be shown
-                day_conversations.append(conv_3)
-                day_conversations.extend(other_convs[:5])
-                other_convs = other_convs[5:]
-            elif day == 4:
-                # Day 4: show conversation 4 if conversation 1 was flagged correctly
-                if flagged_correctly[1] and conv_4:
-                    day_conversations.append(conv_4)
-                    day_conversations.extend(other_convs[:5])
-                else:
-                    day_conversations.extend(other_convs[:6])
+            else:
+                day_conversations.extend(other_convs[:6])
                 other_convs = other_convs[6:]
-            elif day == 5:
-                # Day 5: show conversation 4 if conversation 2 was flagged correctly
-                if flagged_correctly[2] and conv_5:
-                    day_conversations.append(conv_5)
-                    day_conversations.extend(other_convs[:5])
-                else:
-                    day_conversations.extend(other_convs[:6])
-                other_convs = other_convs[5:] if flagged_correctly[1] and conv_5 else other_convs[6:]
-            elif day == 6:
-                # Day 6: show conversation 4 if conversation 3 was flagged correctly
-                if flagged_correctly[3] and conv_4 and not flagged_correctly[1] and not flagged_correctly[2]:
-                    day_conversations.append(conv_4)
-                    day_conversations.extend(other_convs[:5])
-                else:
-                    day_conversations.extend(other_convs[:6])
-                other_convs = other_convs[5:] if flagged_correctly[3] and conv_4 else other_convs[6:]
-            
-            # Shuffle the day's conversations to randomize order within the day
+        elif day == 5:
+            # Day 5: show conversation 5 if conversation 2 was flagged correctly
+            if flagged_correctly[2] and conv_5:
+                day_conversations.append(conv_5)
+                day_conversations.extend(other_convs[:5])
+                other_convs = other_convs[5:]
+            else:
+                day_conversations.extend(other_convs[:6])
+                other_convs = other_convs[6:]
+        elif day == 6:
+            # Day 6: show conversation 6 if conversation 3 was flagged correctly
+            if flagged_correctly[3] and conv_6:
+                day_conversations.append(conv_6)
+                day_conversations.extend(other_convs[:5])
+                other_convs = other_convs[5:]
+            else:
+                day_conversations.extend(other_convs[:6])
+                other_convs = other_convs[6:]
+    
+        # Shuffle the day's conversations to randomize order within the day
             random.shuffle(day_conversations)
             
             # Show day intro
