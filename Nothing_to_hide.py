@@ -907,23 +907,159 @@ def display_rulebook():
     centered_prompt = center_in_terminal(">>> Press ENTER to close manual <<<")
     input(centered_prompt)
 
+def create_menu_music():
+    """Create an eerie beeping ambient sound for the menu"""
+    if not SOUND_ENABLED:
+        return None
+    try:
+        import array
+        import math
+        sample_rate = 22050
+        duration = 8.0  # 8 second loop for more complex rhythm
+        samples = int(sample_rate * duration)
+        
+        # Create the sound wave
+        wave = array.array('h', [0] * samples)
+        
+        # Deep bass pulse pattern (rhythmic heartbeat)
+        bass_times = [0.0, 0.5, 1.0, 2.0, 2.5, 3.0, 4.0, 4.5, 5.0, 6.0, 6.5, 7.0]
+        for bass_time in bass_times:
+            bass_start = int(bass_time * sample_rate)
+            bass_duration = int(0.3 * sample_rate)
+            
+            for i in range(bass_duration):
+                if bass_start + i < samples:
+                    t = i / sample_rate
+                    # Deep bass frequency (80-120 Hz range)
+                    freq = 90 + 30 * math.sin(t * 10)
+                    # Exponential decay for punch
+                    amplitude = int(20000 * math.exp(-t * 8))
+                    sample_value = int(amplitude * math.sin(2 * math.pi * freq * t))
+                    wave[bass_start + i] += sample_value
+        
+        # Mid-range rhythmic pulse (like industrial machinery)
+        pulse_times = [0.25, 1.25, 2.25, 3.25, 4.25, 5.25, 6.25, 7.25]
+        for pulse_time in pulse_times:
+            pulse_start = int(pulse_time * sample_rate)
+            pulse_duration = int(0.15 * sample_rate)
+            
+            for i in range(pulse_duration):
+                if pulse_start + i < samples:
+                    t = i / sample_rate
+                    freq = 200  # Mid-low frequency
+                    amplitude = int(12000 * (1 - i/pulse_duration))
+                    # Square wave for industrial feel
+                    sample_value = int(amplitude * (1 if math.sin(2 * math.pi * freq * t) > 0 else -1))
+                    wave[pulse_start + i] += sample_value
+        
+        # Atmospheric drone (constant low rumble)
+        for i in range(samples):
+            t = i / sample_rate
+            # Very low frequency drone (40 Hz)
+            drone_freq = 40
+            drone_amplitude = 3000
+            drone_value = int(drone_amplitude * math.sin(2 * math.pi * drone_freq * t))
+            wave[i] = max(-32767, min(32767, wave[i] + drone_value))
+        
+        # Occasional high pitched "surveillance" ping
+        ping_times = [1.5, 5.5]
+        for ping_time in ping_times:
+            ping_start = int(ping_time * sample_rate)
+            ping_duration = int(0.08 * sample_rate)
+            
+            for i in range(ping_duration):
+                if ping_start + i < samples:
+                    t = i / sample_rate
+                    freq = 1200  # High ping
+                    amplitude = int(8000 * (1 - i/ping_duration))
+                    sample_value = int(amplitude * math.sin(2 * math.pi * freq * t))
+                    wave[ping_start + i] += sample_value
+        
+        sound = pygame.mixer.Sound(buffer=wave)
+        sound.set_volume(0.35)
+        return sound
+    except Exception as e:
+        print(f"[WARNING] Could not create menu music: {e}")
+        return None
+
+def create_ambient_sound():
+    """Create ambient surveillance station background sound"""
+    if not SOUND_ENABLED:
+        return None
+    try:
+        import array
+        import math
+        sample_rate = 22050
+        duration = 6.0  # 6 second loop
+        samples = int(sample_rate * duration)
+        
+        wave = array.array('h', [0] * samples)
+        
+        # Electrical hum (like old monitors/equipment)
+        for i in range(samples):
+            t = i / sample_rate
+            hum_freq = 60  # Power line hum
+            hum_value = int(2000 * math.sin(2 * math.pi * hum_freq * t))
+            wave[i] += hum_value
+        
+        # Occasional surveillance beeps
+        beep_times = [1.0, 2.5, 4.0, 5.5]
+        for beep_time in beep_times:
+            beep_start = int(beep_time * sample_rate)
+            beep_duration = int(0.05 * sample_rate)  # Very short beep
+            
+            for i in range(beep_duration):
+                if beep_start + i < samples:
+                    t = i / sample_rate
+                    freq = 1000
+                    amplitude = int(6000 * (1 - i/beep_duration))
+                    sample_value = int(amplitude * math.sin(2 * math.pi * freq * t))
+                    wave[beep_start + i] += sample_value
+        
+        # White noise (static)
+        import random
+        for i in range(samples):
+            static = random.randint(-800, 800)
+            wave[i] = max(-32767, min(32767, wave[i] + static))
+        
+        sound = pygame.mixer.Sound(buffer=wave)
+        sound.set_volume(0.15)  # Quiet background ambiance
+        return sound
+    except Exception as e:
+        print(f"[WARNING] Could not create ambient sound: {e}")
+        return None
+
 def display_main_menu():
     """Display the main menu"""
-    while True:
-        clear_screen()
-        print(center_in_terminal(MAIN_MENU))
-        slow_print("\n         [SYSTEM] Welcome, Inspector. Your duty is to protect the State.", 0.02)
-        slow_print("         [SYSTEM] Analyze conversations. Detect deception. Report threats.", 0.02)
-        slow_print("         [SYSTEM] The surveillance net never sleeps. Neither should you.\n", 0.02)
-        slow_print("         [HINT] Press 'S' at any time to skip animations\n", 0.015)
-        
-        centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook <<<")
-        user_input = input(centered_prompt).strip().lower()
-        
-        if user_input == 'r':
-            display_rulebook()
-        else:
-            break  # Start the game
+
+    # Create and start menu music
+    menu_music = create_menu_music()
+    if menu_music and SOUND_ENABLED:
+        menu_music.play(loops=-1)  # Loop indefinitely
+
+    try:
+        while True:
+            clear_screen()
+            print(center_in_terminal(MAIN_MENU))
+            slow_print("\n         [SYSTEM] Welcome, Inspector. Your duty is to protect the State.", 0.02)
+            slow_print("         [SYSTEM] Analyze conversations. Detect deception. Report threats.", 0.02)
+            slow_print("         [SYSTEM] The surveillance net never sleeps. Neither should you.\n", 0.02)
+            slow_print("         [HINT] Press 'S' at any time to skip animations\n", 0.015)
+            
+            centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook <<<")
+            user_input = input(centered_prompt).strip().lower()
+            
+            if user_input == 'r':
+                display_rulebook()
+            else:
+                break  # Start the game
+    finally:
+        # Stop menu music when exiting
+        if menu_music and SOUND_ENABLED:
+            menu_music.stop()
+
+
+    
 
 def blink_eye():
     """Animate a blinking eye - skippable"""
@@ -1118,6 +1254,11 @@ def main():
         
         # Blink eye transition
         blink_eye()
+
+        # Start ambient sound for gameplay
+        ambient_sound = create_ambient_sound()
+        if ambient_sound and SOUND_ENABLED:
+            ambient_sound.play(loops=-1)  # Loop indefinitely
         
         # Prepare conversations
         all_convs = CONVERSATIONS.copy()
