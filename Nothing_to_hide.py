@@ -805,9 +805,7 @@ CONVERSATIONS = [
             ("You", "What am I supposed to do with this knowledge?"),
             ("Agent Reeves", "That depends. Some rebels slipped through your assessments."),
             ("You", "My early work had... inconsistencies."),
-            ("Agent Reeves", "Those rebels are still organizing. You could expose them now."),
-            ("You", "Or?"),
-            ("Agent Reeves", "Or you could tell them what you've learned. The choice is yours.")
+            ("Agent Reeves", "Those rebels are still organizing. You could expose them now.")
         ],
         "has_secret": False,
         "secret": None
