@@ -731,12 +731,12 @@ CONVERSATIONS = [
         "id": 44,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
-            ("Agent Reeves", "Your answers satisfied our concerns. For now."),
+            ("Agent Reeves", "Your answers yesterday proved your loyalty beyond doubt."),
             ("You", "I serve the State faithfully."),
-            ("Agent Reeves", "Then you should know the truth about your work."),
+            ("Agent Reeves", "You do. Which is why you deserve to know the truth."),
             ("You", "What truth?"),
-            ("Agent Reeves", "The U.P Department. Tell me, have you ever met a U.P officer?"),
-            ("You", "No. They operate in secret.")
+            ("Agent Reeves", "About the U.P Department. Tell me, have you ever met a U.P officer?"),
+            ("You", "No. They operate in secret, don't they?")
         ],
         "has_secret": False,
         "secret": None
@@ -746,11 +746,11 @@ CONVERSATIONS = [
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "Have you ever seen a U.P facility?"),
-            ("You", "No. Classified locations."),
-            ("Agent Reeves", "Have you ever received confirmation of a prisoner in U.P custody?"),
-            ("You", "No. That's not my clearance level."),
-            ("Agent Reeves", "Interesting. What if I told you there is no U.P Department?"),
-            ("You", "That's... that's impossible. People disappear.")
+            ("You", "No. The locations are classified."),
+            ("Agent Reeves", "Have you ever received confirmation of anyone in U.P custody?"),
+            ("You", "No. I assumed that's above my clearance level."),
+            ("Agent Reeves", "What if I told you there is no U.P Department?"),
+            ("You", "That's... impossible. People disappear every day.")
         ],
         "has_secret": False,
         "secret": None
@@ -759,12 +759,12 @@ CONVERSATIONS = [
         "id": 46,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
-            ("Agent Reeves", "People do disappear. But not to a facility."),
-            ("You", "Then where?"),
-            ("Agent Reeves", "Nowhere. They're executed. Same day. No processing, no facility."),
-            ("You", "But the reports, the documentation..."),
-            ("Agent Reeves", "Fiction. All of it. There are no U.P officers."),
-            ("You", "This can't be real.")
+            ("Agent Reeves", "People do disappear. But not to a department."),
+            ("You", "Then where do they go?"),
+            ("Agent Reeves", "Nowhere. They're eliminated. Same day. No processing, no custody."),
+            ("You", "But the documentation, the procedures..."),
+            ("Agent Reeves", "Theater. All of it. The U.P Department doesn't exist."),
+            ("You", "I don't understand. Why create a fiction?")
         ],
         "has_secret": False,
         "secret": None
@@ -773,12 +773,12 @@ CONVERSATIONS = [
         "id": 47,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
-            ("Agent Reeves", "The U.P Department is a story. A useful lie."),
-            ("You", "Why tell me this?"),
-            ("Agent Reeves", "Because you helped some rebels escape our notice."),
-            ("You", "I don't know what you mean."),
-            ("Agent Reeves", "You marked them as loyal. They organized. They grew stronger."),
-            ("You", "That was... I made errors in judgment.")
+            ("Agent Reeves", "Fear of the unknown is more powerful than fear of death."),
+            ("You", "The mystery keeps them compliant."),
+            ("Agent Reeves", "Exactly. No one knows where U.P takes people. What happens there."),
+            ("You", "Because there is no 'there'. It's a psychological weapon."),
+            ("Agent Reeves", "Now you understand. You're trusted with this because you're loyal."),
+            ("You", "Why tell me at all?")
         ],
         "has_secret": False,
         "secret": None
@@ -787,12 +787,12 @@ CONVERSATIONS = [
         "id": 48,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
-            ("Agent Reeves", "Errors. Or mercy. Either way, you deserve to know."),
-            ("You", "Know what?"),
-            ("Agent Reeves", "What happens to those you flag. They don't disappear to mystery."),
-            ("You", "They're murdered."),
-            ("Agent Reeves", "Correct. By men in unmarked vans. No department. No facility."),
-            ("You", "Nothing is U.P. Nothing was ever up.")
+            ("Agent Reeves", "Because you need to understand what your work really does."),
+            ("You", "What do you mean?"),
+            ("Agent Reeves", "Those you flag aren't taken to a facility for processing."),
+            ("You", "They're killed immediately."),
+            ("Agent Reeves", "Unmarked vans. Execution squads. No trials, no questions."),
+            ("You", "Nothing is U.P. There never was anything up.")
         ],
         "has_secret": False,
         "secret": None
@@ -801,12 +801,13 @@ CONVERSATIONS = [
         "id": 49,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
-            ("Agent Reeves", "Now you understand. The question is: what will you do?"),
-            ("You", "Do?"),
-            ("Agent Reeves", "The rebels you saved. They're still out there."),
-            ("You", "You want me to flag them now?"),
-            ("Agent Reeves", "No. I want to know if you'll tell them the truth."),
-            ("You", "Why would you want that?")
+            ("Agent Reeves", "The State trusts you with this truth. Few know it."),
+            ("You", "What am I supposed to do with this knowledge?"),
+            ("Agent Reeves", "That depends. Some rebels slipped through your assessments."),
+            ("You", "My early work had... inconsistencies."),
+            ("Agent Reeves", "Those rebels are still organizing. You could expose them now."),
+            ("You", "Or?"),
+            ("Agent Reeves", "Or you could tell them what you've learned. The choice is yours.")
         ],
         "has_secret": False,
         "secret": None
