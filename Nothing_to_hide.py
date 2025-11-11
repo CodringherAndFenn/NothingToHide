@@ -1867,6 +1867,10 @@ def main():
             for i, conv in enumerate(day8_convs):
                 display_conversation(conv)
 
+                # Let player read the conversation before clearing
+                prompt = center_in_terminal("\n>>> Press ENTER to continue <<<")
+                input(prompt)
+
                 # No judgment for these - just revelations
                 clear_screen()
                 print(center_in_terminal(BORDER_TOP))
@@ -1878,11 +1882,6 @@ def main():
                 with SkippableAnimation("record_wait") as anim:
                     if not anim.check_skip():
                         time.sleep(1.5)
-
-                # Continue prompt
-                if i < len(day8_convs) - 1:
-                    prompt = center_in_terminal("\n>>> Press ENTER to continue <<<")
-                    input(prompt)
 
             # Show daily report for day 8
             blink_eye()
