@@ -104,6 +104,7 @@ The core narrative revelation is that the U.P Department **doesn't exist**. It n
 - Auto-centering for all content based on terminal width
 - Fixed width design: `TERM_WIDTH = 100`, `CONTENT_WIDTH = 96`
 - Bordered display using `#` characters for framing
+- Bordered TERMINAL display using `#` characters for framing the margins of the terminal
 - ASCII art for title screen and "watching eye" animations
 
 **Animation Functions**

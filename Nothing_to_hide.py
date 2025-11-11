@@ -824,6 +824,15 @@ BORDER_TOP = "#" * TERM_WIDTH
 BORDER_BOTTOM = "#" * TERM_WIDTH
 BORDER_SIDE = "#"
 
+def get_terminal_border():
+    """Get a full-width terminal border for framing"""
+    try:
+        import shutil
+        width = shutil.get_terminal_size().columns
+        return "#" * width
+    except:
+        return "#" * TERM_WIDTH
+
 MAIN_MENU = """
 ####################################################################################################
 #                                                                                                  #
@@ -976,8 +985,9 @@ def play_typing_sound():
 # ============================================================================
 
 def clear_screen():
-    """Clear the terminal screen"""
+    """Clear the terminal screen and add top terminal border"""
     os.system('cls' if os.name == 'nt' else 'clear')
+    print(get_terminal_border())  # Add top margin border
 
 def get_terminal_width():
     """Get terminal width, default to TERM_WIDTH if can't detect"""
@@ -1005,27 +1015,80 @@ def print_bordered(text):
         bordered = f"{BORDER_SIDE} {padded} {BORDER_SIDE}"
         print(center_in_terminal(bordered))
 
-def slow_print(text, delay=0.03, use_sound=False):
+def print_with_margin(text):
+    """Print text with terminal margin borders - creates a framed effect"""
+    lines = text.split('\n')
+    for line in lines:
+        # Calculate how much space is available for content after borders
+        term_width = get_terminal_width()
+        # Add border characters on left and right margins
+        left_border = "#"
+        right_border = "#"
+        # Calculate padding to center the content between borders
+        available_width = term_width - 2  # Subtract space for left/right border
+        if len(line) < available_width:
+            left_padding = (available_width - len(line)) // 2
+            right_padding = available_width - len(line) - left_padding
+            framed_line = left_border + ' ' * left_padding + line + ' ' * right_padding + right_border
+        else:
+            # If line is too long, truncate it
+            framed_line = left_border + line[:available_width] + right_border
+        print(framed_line)
+
+def add_bottom_border():
+    """Add bottom terminal border for framing"""
+    print(get_terminal_border())
+
+def slow_print(text, delay=0.03, use_sound=False, use_margins=True):
     """Print text with typewriter effect - skippable with S key"""
     with SkippableAnimation("text") as anim:
-        centered = center_in_terminal(text)
-        for char in centered:
-            if anim.check_skip():
-                # Print remaining text instantly
-                sys.stdout.write(centered[centered.index(char):])
+        if use_margins:
+            # Add terminal margin borders for framing
+            term_width = get_terminal_width()
+            lines = text.split('\n')
+            for line in lines:
+                if anim.check_skip():
+                    # Print remaining lines instantly with margins
+                    for remaining_line in lines[lines.index(line):]:
+                        left_padding = (term_width - len(remaining_line) - 2) // 2
+                        right_padding = term_width - len(remaining_line) - left_padding - 2
+                        print("#" + ' ' * left_padding + remaining_line + ' ' * right_padding + "#")
+                    break
+                # Print each line with margin borders
+                left_padding = (term_width - len(line) - 2) // 2
+                right_padding = term_width - len(line) - left_padding - 2
+                framed_line = "#" + ' ' * left_padding + line + ' ' * right_padding + "#"
+                for char in framed_line:
+                    if anim.check_skip():
+                        sys.stdout.write(framed_line[framed_line.index(char):])
+                        sys.stdout.flush()
+                        break
+                    sys.stdout.write(char)
+                    sys.stdout.flush()
+                    if use_sound and char not in [' ', '\n', '#']:
+                        play_typing_sound()
+                    time.sleep(delay if char not in ['#'] else 0)  # Don't delay on borders
+                print()
+        else:
+            # Original centered text without margins
+            centered = center_in_terminal(text)
+            for char in centered:
+                if anim.check_skip():
+                    sys.stdout.write(centered[centered.index(char):])
+                    sys.stdout.flush()
+                    break
+                sys.stdout.write(char)
                 sys.stdout.flush()
-                break
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            if use_sound and char not in [' ', '\n']:
-                play_typing_sound()
-            time.sleep(delay)
-    print()
+                if use_sound and char not in [' ', '\n']:
+                    play_typing_sound()
+                time.sleep(delay)
+            print()
 
 def display_rulebook():
     """Display the inspector's rulebook"""
     clear_screen()
     print(center_in_terminal(RULEBOOK))
+    add_bottom_border()  # Add terminal bottom border before input
     centered_prompt = center_in_terminal(">>> Press ENTER to close manual <<<")
     input(centered_prompt)
 
@@ -1163,11 +1226,12 @@ def display_main_menu():
         while True:
             clear_screen()
             print(center_in_terminal(MAIN_MENU))
-            slow_print("\n         [SYSTEM] Welcome, Inspector. The State weakens. Rebellious thinking spreads.", 0.02)
-            slow_print("         [SYSTEM] Analyze conversations. Detect treason. Report to the U.P Department.", 0.02)
-            slow_print("         [SYSTEM] Those investigated by U.P... disappear. No one knows where.\n", 0.02)
-            slow_print("         [HINT] Press 'S' at any time to skip animations\n", 0.015)
-            
+            slow_print("\n         [SYSTEM] Welcome, Inspector. The State weakens. Rebellious thinking spreads.", 0.02, use_margins=False)
+            slow_print("         [SYSTEM] Analyze conversations. Detect treason. Report to the U.P Department.", 0.02, use_margins=False)
+            slow_print("         [SYSTEM] Those investigated by U.P... disappear. No one knows where.\n", 0.02, use_margins=False)
+            slow_print("         [HINT] Press 'S' at any time to skip animations\n", 0.015, use_margins=False)
+
+            add_bottom_border()  # Add terminal bottom border before input
             centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook <<<")
             user_input = input(centered_prompt).strip().lower()
             
@@ -1361,8 +1425,9 @@ def display_final_evaluation(score, total_days):
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("\n              ...But who watches the watchers?", 0.08)
-    slow_print("              ...And what do they hide?\n", 0.08)
+    slow_print("\n              ...But who watches the watchers?", 0.08, use_margins=False)
+    slow_print("              ...And what do they hide?\n", 0.08, use_margins=False)
+    add_bottom_border()  # Add terminal bottom border at end
 
 def handle_agent_questions():
     """Handle Day 7 agent investigation questions - returns True if player passes"""
@@ -1407,9 +1472,10 @@ def handle_agent_questions():
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("\n         An encrypted message appears on your terminal...", 0.04)
-    slow_print("         Someone is watching your work. Testing your loyalty.\n", 0.04)
+    slow_print("\n         An encrypted message appears on your terminal...", 0.04, use_margins=False)
+    slow_print("         Someone is watching your work. Testing your loyalty.\n", 0.04, use_margins=False)
 
+    add_bottom_border()  # Add terminal bottom border before input
     prompt = center_in_terminal("\n>>> Press ENTER to begin interrogation <<<")
     input(prompt)
 
@@ -1522,39 +1588,39 @@ def display_good_ending():
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
 
-    slow_print("\n         You send an encrypted message to the rebel contacts.", 0.05)
-    slow_print("         You tell them everything. The U.P Department is a lie.", 0.05)
-    slow_print("         There is no facility. No officers. Only execution squads.\n", 0.05)
+    slow_print("\n         You send an encrypted message to the rebel contacts.", 0.05, use_margins=False)
+    slow_print("         You tell them everything. The U.P Department is a lie.", 0.05, use_margins=False)
+    slow_print("         There is no facility. No officers. Only execution squads.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         The message spreads through the resistance network.", 0.05)
-    slow_print("         Within days, everyone knows: Nothing is U.P.\n", 0.05)
+    slow_print("         The message spreads through the resistance network.", 0.05, use_margins=False)
+    slow_print("         Within days, everyone knows: Nothing is U.P.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause2") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         The State's most powerful weapon - fear of the unknown - is broken.", 0.05)
-    slow_print("         People stop being afraid of disappearing to a mysterious department.", 0.05)
-    slow_print("         They see it for what it is: State-sponsored murder.\n", 0.05)
+    slow_print("         The State's most powerful weapon - fear of the unknown - is broken.", 0.05, use_margins=False)
+    slow_print("         People stop being afraid of disappearing to a mysterious department.", 0.05, use_margins=False)
+    slow_print("         They see it for what it is: State-sponsored murder.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause3") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         The rebellion grows. Protests multiply.", 0.05)
-    slow_print("         The dying State has lost its grip on the population.\n", 0.05)
+    slow_print("         The rebellion grows. Protests multiply.", 0.05, use_margins=False)
+    slow_print("         The dying State has lost its grip on the population.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause4") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         As for you?", 0.05)
-    slow_print("         They'll come for you soon. You know that.", 0.05)
-    slow_print("         But you made the right choice.\n", 0.05)
+    slow_print("         As for you?", 0.05, use_margins=False)
+    slow_print("         They'll come for you soon. You know that.", 0.05, use_margins=False)
+    slow_print("         But you made the right choice.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause5") as anim:
         if not anim.check_skip():
@@ -1569,6 +1635,7 @@ def display_good_ending():
     print_bordered("Thank you for playing.".center(CONTENT_WIDTH))
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
+    add_bottom_border()  # Add terminal bottom border at end
 
 def display_bad_ending_silence():
     """Display bad ending - stayed silent"""
@@ -1581,41 +1648,41 @@ def display_bad_ending_silence():
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
 
-    slow_print("\n         You say nothing.", 0.05)
-    slow_print("         The truth dies with you.", 0.05)
-    slow_print("         You return to work the next day. Business as usual.\n", 0.05)
+    slow_print("\n         You say nothing.", 0.05, use_margins=False)
+    slow_print("         The truth dies with you.", 0.05, use_margins=False)
+    slow_print("         You return to work the next day. Business as usual.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         Two weeks later, you hear the news.", 0.05)
-    slow_print("         The rebels you saved have been captured.", 0.05)
-    slow_print("         All of them. Executed.\n", 0.05)
+    slow_print("         Two weeks later, you hear the news.", 0.05, use_margins=False)
+    slow_print("         The rebels you saved have been captured.", 0.05, use_margins=False)
+    slow_print("         All of them. Executed.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause2") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         The State labels it a victory against terrorism.", 0.05)
-    slow_print("         Your supervisor commends your earlier 'corrections' to flagging patterns.", 0.05)
-    slow_print("         They think you finally saw the error of your ways.\n", 0.05)
+    slow_print("         The State labels it a victory against terrorism.", 0.05, use_margins=False)
+    slow_print("         Your supervisor commends your earlier 'corrections' to flagging patterns.", 0.05, use_margins=False)
+    slow_print("         They think you finally saw the error of your ways.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause3") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         You know the truth about U.P.", 0.05)
-    slow_print("         You know what happens to those you flag.", 0.05)
-    slow_print("         But you keep working. Keep flagging. Keep sending people to death.\n", 0.05)
+    slow_print("         You know the truth about U.P.", 0.05, use_margins=False)
+    slow_print("         You know what happens to those you flag.", 0.05, use_margins=False)
+    slow_print("         But you keep working. Keep flagging. Keep sending people to death.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause4") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         The State endures.", 0.05)
-    slow_print("         The lie endures.", 0.05)
-    slow_print("         And you endure.\n", 0.05)
+    slow_print("         The State endures.", 0.05, use_margins=False)
+    slow_print("         The lie endures.", 0.05, use_margins=False)
+    slow_print("         And you endure.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause5") as anim:
         if not anim.check_skip():
@@ -1630,6 +1697,7 @@ def display_bad_ending_silence():
     print_bordered("Thank you for playing.".center(CONTENT_WIDTH))
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
+    add_bottom_border()  # Add terminal bottom border at end
 
 def display_bad_ending_caught():
     """Display bad ending - caught by Internal Affairs"""
@@ -1642,32 +1710,32 @@ def display_bad_ending_caught():
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
 
-    slow_print("\n         Your answers raised too many red flags.", 0.05)
-    slow_print("         Internal Affairs has marked you as a rebel sympathizer.", 0.05)
-    slow_print("         You are flagged for investigation by the U.P Department.\n", 0.05)
+    slow_print("\n         Your answers raised too many red flags.", 0.05, use_margins=False)
+    slow_print("         Internal Affairs has marked you as a rebel sympathizer.", 0.05, use_margins=False)
+    slow_print("         You are flagged for investigation by the U.P Department.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         That night, an unmarked van arrives at your home.", 0.05)
-    slow_print("         No insignia. No identification. Just armed men.", 0.05)
-    slow_print("         You now understand: there is no U.P Department.\n", 0.05)
+    slow_print("         That night, an unmarked van arrives at your home.", 0.05, use_margins=False)
+    slow_print("         No insignia. No identification. Just armed men.", 0.05, use_margins=False)
+    slow_print("         You now understand: there is no U.P Department.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause2") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         There is no facility.", 0.05)
-    slow_print("         There is no processing.", 0.05)
-    slow_print("         There is only this van, and the darkness beyond.\n", 0.05)
+    slow_print("         There is no facility.", 0.05, use_margins=False)
+    slow_print("         There is no processing.", 0.05, use_margins=False)
+    slow_print("         There is only this van, and the darkness beyond.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause3") as anim:
         if not anim.check_skip():
             time.sleep(2)
 
-    slow_print("         Nothing was U.P.", 0.05)
-    slow_print("         And now, nothing is left of you.\n", 0.05)
+    slow_print("         Nothing was U.P.", 0.05, use_margins=False)
+    slow_print("         And now, nothing is left of you.\n", 0.05, use_margins=False)
 
     with SkippableAnimation("ending_pause4") as anim:
         if not anim.check_skip():
@@ -1682,6 +1750,7 @@ def display_bad_ending_caught():
     print_bordered("Thank you for playing.".center(CONTENT_WIDTH))
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
+    add_bottom_border()  # Add terminal bottom border at end
 
 # ============================================================================
 # MAIN GAME LOOP
