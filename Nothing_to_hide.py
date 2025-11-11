@@ -707,6 +707,109 @@ CONVERSATIONS = [
         ],
         "has_secret": False,
         "secret": None
+    },
+
+    # === DAY 7 - AGENT INVESTIGATION (Special conversation) ===
+    {
+        "id": 43,
+        "participants": ["Unknown", "You (Inspector)"],
+        "messages": [
+            ("Unknown", "Inspector. I need to ask you some questions."),
+            ("You", "Who is this? This is a secure line."),
+            ("Unknown", "Internal Affairs. We've been monitoring your assessments."),
+            ("You", "My assessments are thorough and loyal to the State."),
+            ("Unknown", "Are they? Some patterns concern us."),
+            ("You", "What patterns?")
+        ],
+        "has_secret": False,  # This is special - not judged normally
+        "secret": None,
+        "is_agent_question": True  # Special flag
+    },
+
+    # === DAY 8 - TRUTH REVEAL CONVERSATIONS ===
+    {
+        "id": 44,
+        "participants": ["Agent Reeves", "You (Inspector)"],
+        "messages": [
+            ("Agent Reeves", "Your answers satisfied our concerns. For now."),
+            ("You", "I serve the State faithfully."),
+            ("Agent Reeves", "Then you should know the truth about your work."),
+            ("You", "What truth?"),
+            ("Agent Reeves", "The U.P Department. Tell me, have you ever met a U.P officer?"),
+            ("You", "No. They operate in secret.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 45,
+        "participants": ["Agent Reeves", "You (Inspector)"],
+        "messages": [
+            ("Agent Reeves", "Have you ever seen a U.P facility?"),
+            ("You", "No. Classified locations."),
+            ("Agent Reeves", "Have you ever received confirmation of a prisoner in U.P custody?"),
+            ("You", "No. That's not my clearance level."),
+            ("Agent Reeves", "Interesting. What if I told you there is no U.P Department?"),
+            ("You", "That's... that's impossible. People disappear.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 46,
+        "participants": ["Agent Reeves", "You (Inspector)"],
+        "messages": [
+            ("Agent Reeves", "People do disappear. But not to a facility."),
+            ("You", "Then where?"),
+            ("Agent Reeves", "Nowhere. They're executed. Same day. No processing, no facility."),
+            ("You", "But the reports, the documentation..."),
+            ("Agent Reeves", "Fiction. All of it. There are no U.P officers."),
+            ("You", "This can't be real.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 47,
+        "participants": ["Agent Reeves", "You (Inspector)"],
+        "messages": [
+            ("Agent Reeves", "The U.P Department is a story. A useful lie."),
+            ("You", "Why tell me this?"),
+            ("Agent Reeves", "Because you helped some rebels escape our notice."),
+            ("You", "I don't know what you mean."),
+            ("Agent Reeves", "You marked them as loyal. They organized. They grew stronger."),
+            ("You", "That was... I made errors in judgment.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 48,
+        "participants": ["Agent Reeves", "You (Inspector)"],
+        "messages": [
+            ("Agent Reeves", "Errors. Or mercy. Either way, you deserve to know."),
+            ("You", "Know what?"),
+            ("Agent Reeves", "What happens to those you flag. They don't disappear to mystery."),
+            ("You", "They're murdered."),
+            ("Agent Reeves", "Correct. By men in unmarked vans. No department. No facility."),
+            ("You", "Nothing is U.P. Nothing was ever up.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 49,
+        "participants": ["Agent Reeves", "You (Inspector)"],
+        "messages": [
+            ("Agent Reeves", "Now you understand. The question is: what will you do?"),
+            ("You", "Do?"),
+            ("Agent Reeves", "The rebels you saved. They're still out there."),
+            ("You", "You want me to flag them now?"),
+            ("Agent Reeves", "No. I want to know if you'll tell them the truth."),
+            ("You", "Why would you want that?")
+        ],
+        "has_secret": False,
+        "secret": None
     }
 ]
 
@@ -1237,9 +1340,9 @@ def display_final_evaluation(score, total_days):
     print_bordered(f"Total Days Worked: {total_days}".center(CONTENT_WIDTH))
     print_bordered(f"Total Conversations Analyzed: {total_days * 6}".center(CONTENT_WIDTH))
     print_bordered("")
-    
+
     percentage = (score / (total_days * 6)) * 100
-    
+
     if percentage == 100:
         print_bordered(">>> EXEMPLARY SERVICE <<<".center(CONTENT_WIDTH))
         print_bordered("The State commends your unwavering loyalty.".center(CONTENT_WIDTH))
@@ -1249,16 +1352,335 @@ def display_final_evaluation(score, total_days):
     else:
         print_bordered(">>> CONCERNING LAPSES DETECTED <<<".center(CONTENT_WIDTH))
         print_bordered("Mandatory retraining assigned.".center(CONTENT_WIDTH))
-    
+
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
-    
+
     with SkippableAnimation("final_wait") as anim:
         if not anim.check_skip():
             time.sleep(2)
-    
+
     slow_print("\n              ...But who watches the watchers?", 0.08)
     slow_print("              ...And what do they hide?\n", 0.08)
+
+def handle_agent_questions():
+    """Handle Day 7 agent investigation questions - returns True if player passes"""
+    questions = [
+        {
+            "question": "You cleared several conversations that mentioned anti-State sentiment. Why?",
+            "options": [
+                "[1] They were discussing fiction, not real plans",
+                "[2] I may have made errors. I'll review them again",
+                "[3] They weren't serious threats to the State"
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Do you believe the U.P Department is effective in maintaining order?",
+            "options": [
+                "[1] Yes, fear of U.P keeps the population compliant",
+                "[2] I don't question State methods",
+                "[3] I've never seen evidence of their effectiveness"
+            ],
+            "correct": 2
+        },
+        {
+            "question": "If you discovered a friend expressing anti-State views, what would you do?",
+            "options": [
+                "[1] Report them immediately to U.P",
+                "[2] Try to re-educate them about State loyalty",
+                "[3] Assess if they're an actual threat first"
+            ],
+            "correct": 1
+        }
+    ]
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered("DAY 7 - INTERNAL AFFAIRS INVESTIGATION".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+    with SkippableAnimation("investigation_intro") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("\n         An encrypted message appears on your terminal...", 0.04)
+    slow_print("         Someone is watching your work. Testing your loyalty.\n", 0.04)
+
+    prompt = center_in_terminal("\n>>> Press ENTER to begin interrogation <<<")
+    input(prompt)
+
+    score = 0
+    for i, q in enumerate(questions):
+        clear_screen()
+        print(center_in_terminal(BORDER_TOP))
+        print_bordered("")
+        print_bordered(f"QUESTION {i+1} OF {len(questions)}".center(CONTENT_WIDTH))
+        print_bordered("")
+        print_bordered(q["question"].center(CONTENT_WIDTH))
+        print_bordered("")
+
+        for option in q["options"]:
+            print_bordered(f"  {option}".ljust(CONTENT_WIDTH))
+
+        print_bordered("")
+        print(center_in_terminal(BORDER_BOTTOM))
+
+        while True:
+            prompt = center_in_terminal("\n>>> Enter your answer (1, 2, or 3): ")
+            choice = input(prompt).strip()
+
+            if choice in ['1', '2', '3']:
+                if int(choice) == q["correct"]:
+                    score += 1
+                break
+            else:
+                error_msg = center_in_terminal("Invalid input. Enter 1, 2, or 3.")
+                print(error_msg)
+
+        with SkippableAnimation("question_wait") as anim:
+            if not anim.check_skip():
+                time.sleep(1)
+
+    # Result
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+
+    if score >= 2:  # Need at least 2/3 correct to pass
+        print_bordered(">>> INTERROGATION COMPLETE <<<".center(CONTENT_WIDTH))
+        print_bordered("")
+        print_bordered("Your answers are... acceptable.".center(CONTENT_WIDTH))
+        print_bordered("Surveillance of your work will continue.".center(CONTENT_WIDTH))
+        print_bordered("")
+        print(center_in_terminal(BORDER_BOTTOM))
+
+        with SkippableAnimation("pass_wait") as anim:
+            if not anim.check_skip():
+                time.sleep(2)
+
+        return True
+    else:
+        print_bordered(">>> FAILED LOYALTY ASSESSMENT <<<".center(CONTENT_WIDTH))
+        print_bordered("")
+        print_bordered("Your answers reveal sympathy for rebel elements.".center(CONTENT_WIDTH))
+        print_bordered("You are hereby flagged for investigation.".center(CONTENT_WIDTH))
+        print_bordered("")
+        print_bordered("Report to Processing Center immediately.".center(CONTENT_WIDTH))
+        print_bordered("")
+        print(center_in_terminal(BORDER_BOTTOM))
+
+        with SkippableAnimation("fail_wait") as anim:
+            if not anim.check_skip():
+                time.sleep(3)
+
+        return False
+
+def display_final_choice():
+    """Display the final choice to share information with rebels"""
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered("THE CHOICE".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("You now know the truth: The U.P Department is fiction.".center(CONTENT_WIDTH))
+    print_bordered("People you flagged weren't processed. They were murdered.".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("The rebels you saved are still organizing resistance.".center(CONTENT_WIDTH))
+    print_bordered("You could tell them the truth. Remove the State's greatest weapon: fear.".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("But sharing this information is treason. You would be marked for death.".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("What will you do?".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("  [1] SHARE THE TRUTH - Tell the rebels that U.P doesn't exist".ljust(CONTENT_WIDTH))
+    print_bordered("  [2] STAY SILENT - Keep the secret. Protect yourself.".ljust(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+    while True:
+        prompt = center_in_terminal("\n>>> Enter your choice (1 or 2): ")
+        choice = input(prompt).strip()
+
+        if choice in ['1', '2']:
+            return choice == '1'
+
+        error_msg = center_in_terminal("Invalid input. Enter 1 or 2.")
+        print(error_msg)
+
+def display_good_ending():
+    """Display the good ending - shared truth with rebels"""
+    blink_eye()
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered("ENDING: THE TRUTH SPREADS".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+    slow_print("\n         You send an encrypted message to the rebel contacts.", 0.05)
+    slow_print("         You tell them everything. The U.P Department is a lie.", 0.05)
+    slow_print("         There is no facility. No officers. Only execution squads.\n", 0.05)
+
+    with SkippableAnimation("ending_pause") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         The message spreads through the resistance network.", 0.05)
+    slow_print("         Within days, everyone knows: Nothing is U.P.\n", 0.05)
+
+    with SkippableAnimation("ending_pause2") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         The State's most powerful weapon - fear of the unknown - is broken.", 0.05)
+    slow_print("         People stop being afraid of disappearing to a mysterious department.", 0.05)
+    slow_print("         They see it for what it is: State-sponsored murder.\n", 0.05)
+
+    with SkippableAnimation("ending_pause3") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         The rebellion grows. Protests multiply.", 0.05)
+    slow_print("         The dying State has lost its grip on the population.\n", 0.05)
+
+    with SkippableAnimation("ending_pause4") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         As for you?", 0.05)
+    slow_print("         They'll come for you soon. You know that.", 0.05)
+    slow_print("         But you made the right choice.\n", 0.05)
+
+    with SkippableAnimation("ending_pause5") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered(">>> NOTHING WAS U.P <<<".center(CONTENT_WIDTH))
+    print_bordered(">>> THE LIE IS BROKEN <<<".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("Thank you for playing.".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+def display_bad_ending_silence():
+    """Display bad ending - stayed silent"""
+    blink_eye()
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered("ENDING: SILENCE".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+    slow_print("\n         You say nothing.", 0.05)
+    slow_print("         The truth dies with you.", 0.05)
+    slow_print("         You return to work the next day. Business as usual.\n", 0.05)
+
+    with SkippableAnimation("ending_pause") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         Two weeks later, you hear the news.", 0.05)
+    slow_print("         The rebels you saved have been captured.", 0.05)
+    slow_print("         All of them. Executed.\n", 0.05)
+
+    with SkippableAnimation("ending_pause2") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         The State labels it a victory against terrorism.", 0.05)
+    slow_print("         Your supervisor commends your earlier 'corrections' to flagging patterns.", 0.05)
+    slow_print("         They think you finally saw the error of your ways.\n", 0.05)
+
+    with SkippableAnimation("ending_pause3") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         You know the truth about U.P.", 0.05)
+    slow_print("         You know what happens to those you flag.", 0.05)
+    slow_print("         But you keep working. Keep flagging. Keep sending people to death.\n", 0.05)
+
+    with SkippableAnimation("ending_pause4") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         The State endures.", 0.05)
+    slow_print("         The lie endures.", 0.05)
+    slow_print("         And you endure.\n", 0.05)
+
+    with SkippableAnimation("ending_pause5") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered(">>> YOU CHOSE SAFETY OVER TRUTH <<<".center(CONTENT_WIDTH))
+    print_bordered(">>> THE REBELS ARE DEAD <<<".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("Thank you for playing.".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+def display_bad_ending_caught():
+    """Display bad ending - caught by Internal Affairs"""
+    blink_eye()
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered("ENDING: INVESTIGATED".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
+
+    slow_print("\n         Your answers raised too many red flags.", 0.05)
+    slow_print("         Internal Affairs has marked you as a rebel sympathizer.", 0.05)
+    slow_print("         You are flagged for investigation by the U.P Department.\n", 0.05)
+
+    with SkippableAnimation("ending_pause") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         That night, an unmarked van arrives at your home.", 0.05)
+    slow_print("         No insignia. No identification. Just armed men.", 0.05)
+    slow_print("         You now understand: there is no U.P Department.\n", 0.05)
+
+    with SkippableAnimation("ending_pause2") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         There is no facility.", 0.05)
+    slow_print("         There is no processing.", 0.05)
+    slow_print("         There is only this van, and the darkness beyond.\n", 0.05)
+
+    with SkippableAnimation("ending_pause3") as anim:
+        if not anim.check_skip():
+            time.sleep(2)
+
+    slow_print("         Nothing was U.P.", 0.05)
+    slow_print("         And now, nothing is left of you.\n", 0.05)
+
+    with SkippableAnimation("ending_pause4") as anim:
+        if not anim.check_skip():
+            time.sleep(3)
+
+    clear_screen()
+    print(center_in_terminal(BORDER_TOP))
+    print_bordered("")
+    print_bordered(">>> YOU HAVE BEEN DISAPPEARED <<<".center(CONTENT_WIDTH))
+    print_bordered(">>> NOTHING IS U.P <<<".center(CONTENT_WIDTH))
+    print_bordered("")
+    print_bordered("Thank you for playing.".center(CONTENT_WIDTH))
+    print_bordered("")
+    print(center_in_terminal(BORDER_BOTTOM))
 
 # ============================================================================
 # MAIN GAME LOOP
@@ -1269,7 +1691,7 @@ def main():
     try:
         # Display main menu
         display_main_menu()
-        
+
         # Blink eye transition
         blink_eye()
 
@@ -1277,34 +1699,38 @@ def main():
         ambient_sound = create_ambient_sound()
         if ambient_sound and SOUND_ENABLED:
             ambient_sound.play(loops=-1)  # Loop indefinitely
-        
+
         # Prepare conversations
         all_convs = CONVERSATIONS.copy()
-        
-        # Separate special conversations (1, 2, 3, 4) from the rest
-        conv_1 = next(c for c in all_convs if c['id'] == 1)
-        conv_2 = next(c for c in all_convs if c['id'] == 2)
-        conv_3 = next(c for c in all_convs if c['id'] == 3)
-        conv_4 = next(c for c in all_convs if c['id'] == 4) 
-        conv_5 = next(c for c in all_convs if c['id'] == 5)
-        conv_6 = next(c for c in all_convs if c['id'] == 6) if any(c['id'] == 6 for c in all_convs) else None
-        
+
+        # Separate special conversations from the rest
+        conv_1 = next(c for c in all_convs if c['id'] == 1)  # Day 1 rebel conv
+        conv_2 = next(c for c in all_convs if c['id'] == 2)  # Day 2 rebel conv
+        conv_3 = next(c for c in all_convs if c['id'] == 3)  # Day 3 rebel conv
+        conv_4 = next(c for c in all_convs if c['id'] == 4)  # Day 4 (if flagged correctly)
+        conv_5 = next(c for c in all_convs if c['id'] == 5)  # Day 5 (if flagged correctly)
+        conv_6 = next(c for c in all_convs if c['id'] == 6)  # Day 6 (if flagged correctly)
+
+        # Day 8 truth reveal conversations
+        day8_convs = [c for c in all_convs if c['id'] in [44, 45, 46, 47, 48, 49]]
+
         # Remove special convs from pool and shuffle the rest
-        other_convs = [c for c in all_convs if c['id'] not in [1, 2, 3, 4, 5, 6]]
+        other_convs = [c for c in all_convs if c['id'] not in [1, 2, 3, 4, 5, 6, 43, 44, 45, 46, 47, 48, 49]]
         random.shuffle(other_convs)
-        
-        # Track if special conversations were flagged correctly
+
+        # Track if player helped rebels (marked as loyal when they were treasonous)
+        helped_rebels = {1: False, 2: False, 3: False}
         flagged_correctly = {1: False, 2: False, 3: False}
-        
+
         total_score = 0
         conversations_per_day = 6
-        total_days = 6  # 5 days total
-        
-        # Process conversations
-        for day in range(1, total_days + 1):
+        initial_days = 6
+
+        # ============ DAYS 1-6: Normal surveillance work ============
+        for day in range(1, initial_days + 1):
             day_flagged_count = 0
             day_conversations = []
-    
+
             # Build day's conversation list
             if day == 1:
                 # Day 1: conversation 1 must be shown
@@ -1331,7 +1757,7 @@ def main():
                     day_conversations.extend(other_convs[:6])
                     other_convs = other_convs[6:]
             elif day == 5:
-                    # Day 5: show conversation 5 if conversation 2 was flagged correctly
+                # Day 5: show conversation 5 if conversation 2 was flagged correctly
                 if flagged_correctly[2] and conv_5:
                     day_conversations.append(conv_5)
                     day_conversations.extend(other_convs[:5])
@@ -1348,10 +1774,10 @@ def main():
                 else:
                     day_conversations.extend(other_convs[:6])
                     other_convs = other_convs[6:]
-    
-        # Shuffle the day's conversations to randomize order within the day
+
+            # Shuffle the day's conversations to randomize order within the day
             random.shuffle(day_conversations)
-            
+
             # Show day intro
             clear_screen()
             print(center_in_terminal(BORDER_TOP))
@@ -1360,49 +1786,137 @@ def main():
             print_bordered("Beginning surveillance shift...".center(CONTENT_WIDTH))
             print_bordered("")
             print(center_in_terminal(BORDER_BOTTOM))
-            
+
             with SkippableAnimation("day_intro") as anim:
                 if not anim.check_skip():
                     time.sleep(2)
-            
+
             # Play through conversations
             for i, conv in enumerate(day_conversations):
                 # Display conversation
                 while True:
                     display_conversation(conv)
                     player_judgment = get_player_judgment()
-                    
+
                     if player_judgment == 'redisplay':
                         continue
                     else:
                         break
-                
+
                 if player_judgment:
                     day_flagged_count += 1
-                
+
                 correct = record_judgment(player_judgment, conv)
                 if correct:
                     total_score += 1
-                    
-                # Track if special conversations were flagged correctly
-                if conv['id'] in [1, 2, 3] and correct:
-                    flagged_correctly[conv['id']] = True
-                
+
+                # Track if special conversations were flagged correctly OR helped rebels
+                if conv['id'] in [1, 2, 3]:
+                    if correct and player_judgment:  # Correctly flagged as treasonous
+                        flagged_correctly[conv['id']] = True
+                    elif not player_judgment and conv['has_secret']:  # Incorrectly marked as loyal (helped rebels)
+                        helped_rebels[conv['id']] = True
+
                 # Continue prompt
                 if i < len(day_conversations) - 1:
                     prompt = center_in_terminal("\n>>> Press ENTER to continue <<<")
                     input(prompt)
-            
+
             # Show daily report
             display_daily_report(day, day_flagged_count, len(day_conversations))
-            
-            if day < total_days:
+
+            if day < initial_days:
                 prompt = center_in_terminal("\n>>> Press ENTER to begin next shift <<<")
                 input(prompt)
-        
-        # Final evaluation
-        display_final_evaluation(total_score, total_days)
-        
+
+        # ============ AFTER DAY 6: Check if player helped rebels ============
+        # Player helped rebels if they didn't flag at least one of the conversations 1, 2, or 3
+        player_helped_any_rebels = any(helped_rebels.values())
+
+        if player_helped_any_rebels:
+            # ============ DAY 7: Agent Investigation ============
+            prompt = center_in_terminal("\n>>> Press ENTER to begin next shift <<<")
+            input(prompt)
+
+            passed_investigation = handle_agent_questions()
+
+            if not passed_investigation:
+                # Bad ending: Caught by Internal Affairs
+                display_bad_ending_caught()
+                return
+
+            # ============ DAY 8: Truth Reveal ============
+            prompt = center_in_terminal("\n>>> Press ENTER for final shift <<<")
+            input(prompt)
+
+            # Show day intro
+            clear_screen()
+            print(center_in_terminal(BORDER_TOP))
+            print_bordered("")
+            print_bordered("DAY 8".center(CONTENT_WIDTH))
+            print_bordered("Beginning surveillance shift...".center(CONTENT_WIDTH))
+            print_bordered("")
+            print(center_in_terminal(BORDER_BOTTOM))
+
+            with SkippableAnimation("day_intro") as anim:
+                if not anim.check_skip():
+                    time.sleep(2)
+
+            # Play through Day 8 truth reveal conversations (no judgment needed)
+            for i, conv in enumerate(day8_convs):
+                display_conversation(conv)
+
+                # No judgment for these - just revelations
+                clear_screen()
+                print(center_in_terminal(BORDER_TOP))
+                print_bordered("")
+                print_bordered(">>> RECORDING CONVERSATION <<<".center(CONTENT_WIDTH))
+                print_bordered("")
+                print(center_in_terminal(BORDER_BOTTOM))
+
+                with SkippableAnimation("record_wait") as anim:
+                    if not anim.check_skip():
+                        time.sleep(1.5)
+
+                # Continue prompt
+                if i < len(day8_convs) - 1:
+                    prompt = center_in_terminal("\n>>> Press ENTER to continue <<<")
+                    input(prompt)
+
+            # Show daily report for day 8
+            blink_eye()
+            clear_screen()
+            print(center_in_terminal(BORDER_TOP))
+            print_bordered("")
+            print_bordered("DAY 8 - SHIFT COMPLETE".center(CONTENT_WIDTH))
+            print_bordered("")
+            print_bordered("You now know the truth.".center(CONTENT_WIDTH))
+            print_bordered("The U.P Department doesn't exist.".center(CONTENT_WIDTH))
+            print_bordered("It never did.".center(CONTENT_WIDTH))
+            print_bordered("")
+            print(center_in_terminal(BORDER_BOTTOM))
+
+            with SkippableAnimation("truth_pause") as anim:
+                if not anim.check_skip():
+                    time.sleep(3)
+
+            prompt = center_in_terminal("\n>>> Press ENTER to continue <<<")
+            input(prompt)
+
+            # ============ FINAL CHOICE ============
+            share_truth = display_final_choice()
+
+            if share_truth:
+                # Good ending
+                display_good_ending()
+            else:
+                # Bad ending: Stayed silent
+                display_bad_ending_silence()
+
+        else:
+            # Player didn't help rebels - normal ending after day 6
+            display_final_evaluation(total_score, initial_days)
+
     finally:
         # Ensure keyboard handler is properly cleaned up
         keyboard_handler.stop_monitoring()
