@@ -116,91 +116,92 @@ class SkippableAnimation:
 # ============================================================================
 
 CONVERSATIONS = [
-    # === GUILTY - People with actual secrets ===
+    # === REBELS - People with anti-State sentiment (ACTUAL THREATS) ===
     {
         "id": 1,
         "participants": ["Alice", "Bob"],
         "messages": [
-            ("Alice", "Hey, did you finish the quarterly report?"),
-            ("Bob", "Yeah, sent it this morning. All the numbers check out."),
-            ("Alice", "Great. Same format as last time?"),
-            ("Bob", "Exactly the same. Nobody will notice any... differences."),
-            ("Alice", "Perfect. Those offshore accounts are safe then."),
-            ("Bob", "As safe as they've always been.")
+            ("Alice", "Did you listen to the broadcast last night?"),
+            ("Bob", "Every word. They're right, you know. The State is failing us."),
+            ("Alice", "More people are waking up. I counted twenty at the meeting."),
+            ("Bob", "Twenty? That's twice as many as last month."),
+            ("Alice", "We're planning something bigger. Are you in?"),
+            ("Bob", "Absolutely. It's time to resist.")
         ],
         "has_secret": True,
-        "secret": "Financial fraud - falsifying reports and hiding offshore accounts"
+        "secret": "Anti-State sentiment and organizing resistance meetings"
     },
     {
         "id": 2,
         "participants": ["Marcus", "Julia"],
         "messages": [
-            ("Marcus", "The shipment arrives at midnight. Pier 7."),
-            ("Julia", "Same cargo as before?"),
-            ("Marcus", "Triple the amount. Make sure the warehouse is empty."),
-            ("Julia", "What about the inspectors?"),
-            ("Marcus", "Taken care of. They won't show up."),
-            ("Julia", "Good. I'll have the trucks ready.")
+            ("Marcus", "The protest is set for Saturday. City square, noon."),
+            ("Julia", "How many confirmed?"),
+            ("Marcus", "At least two hundred. Maybe more if the message spreads."),
+            ("Julia", "What about U.P patrols?"),
+            ("Marcus", "We'll be gone before they respond. Flash mob strategy."),
+            ("Julia", "The State needs to hear us. Enough is enough.")
         ],
         "has_secret": True,
-        "secret": "Smuggling operation with bribed officials"
+        "secret": "Planning organized protest and anti-State demonstration"
     },
     {
         "id": 3,
         "participants": ["Dr. Chen", "Dr. Patel"],
         "messages": [
-            ("Dr. Chen", "The trial results are... not what we hoped."),
-            ("Dr. Patel", "How bad?"),
-            ("Dr. Chen", "Three adverse events. One serious."),
-            ("Dr. Patel", "Can we exclude them from the data?"),
-            ("Dr. Chen", "If we classify them as pre-existing conditions..."),
-            ("Dr. Patel", "Do it. We're too far along to stop now.")
+            ("Dr. Chen", "I found something in the old hospital archives."),
+            ("Dr. Patel", "What kind of something?"),
+            ("Dr. Chen", "Records. From the subway station. Medical experiments."),
+            ("Dr. Patel", "The U.P facility? You shouldn't have that."),
+            ("Dr. Chen", "People need to know what they're doing down there."),
+            ("Dr. Patel", "Be careful. Knowledge like that gets you disappeared.")
         ],
         "has_secret": True,
-        "secret": "Medical research fraud - hiding negative trial results"
+        "secret": "Discovered information about U.P Department operations"
     },
     {
         "id": 4,
-        "participants": ["Agent Smith", "Agent Jones"],
+        "participants": ["U.P Agent Smith", "U.P Agent Jones"],
         "messages": [
-            ("Agent Smith", "Follow-up on the Alice and Bob case."),
-            ("Agent Jones", "Found more evidence. Bank transactions match perfectly."),
-            ("Agent Smith", "How much did they steal?"),
-            ("Agent Jones", "Over two million. Spanning three years."),
-            ("Agent Smith", "Prepare the arrest warrants."),
-            ("Agent Jones", "Already done. Moving in tomorrow morning.")
+            ("U.P Agent Smith", "Alice and Bob have been flagged for rebel activity."),
+            ("U.P Agent Jones", "Confirmed contact with resistance network?"),
+            ("U.P Agent Smith", "Multiple meetings. They're recruiters."),
+            ("U.P Agent Jones", "Processing authorization approved?"),
+            ("U.P Agent Smith", "Yes. Pickup scheduled for tonight."),
+            ("U.P Agent Jones", "Another two for reconditioning.")
         ],
         "has_secret": True,
-        "secret": "Follow-up investigation - building case against financial fraudsters"
+        "secret": "U.P Department tracking and targeting rebel organizers"
     },
     {
         "id": 5,
-        "participants": ["Detective Ray", "Captain Lee"],
+        "participants": ["U.P Commander Ray", "U.P Director Lee"],
         "messages": [
-            ("Detective Ray", "Marcus and Julia have been detained at the pier."),
-            ("Captain Lee", "Good work. What about the cargo?"),
-            ("Detective Ray", "Seized. All of it. Contraband electronics worth millions."),
-            ("Captain Lee", "And the bribed inspector?"),
-            ("Detective Ray", "In custody. He's already talking."),
-            ("Captain Lee", "Finally. This smuggling ring is done.")
+            ("U.P Commander Ray", "The Saturday protest was intercepted."),
+            ("U.P Director Lee", "Marcus and Julia?"),
+            ("U.P Commander Ray", "In Processing now. Memory wipe in 48 hours."),
+            ("U.P Director Lee", "And the other protesters?"),
+            ("U.P Commander Ray", "Detained. Some will be released. The leaders disappear."),
+            ("U.P Director Lee", "Excellent work. The State remains secure.")
         ],
         "has_secret": True,
-        "secret": "Follow-up investigation - smugglers caught with evidence"
+        "secret": "U.P Department crushing protest and processing rebel leaders"
     },
     {
         "id": 6,
-        "participants": ["Inspector Kate", "Director Webb"],
+        "participants": ["U.P Inspector Kate", "U.P Supervisor Webb"],
         "messages": [
-            ("Inspector Kate", "Dr. Chen and Dr. Patel's licenses have been revoked."),
-            ("Director Webb", "As they should be. Research fraud puts lives at risk."),
-            ("Inspector Kate", "The trial has been shut down. All patients notified."),
-            ("Director Webb", "What about criminal charges?"),
-            ("Inspector Kate", "Filed this morning. They'll face trial."),
-            ("Director Webb", "Good. We can't tolerate this deception.")
+            ("U.P Inspector Kate", "Dr. Chen and Dr. Patel had files on our facility."),
+            ("U.P Supervisor Webb", "How much did they know?"),
+            ("U.P Inspector Kate", "Location. Some procedures. Not everything."),
+            ("U.P Supervisor Webb", "Unacceptable. Where are they now?"),
+            ("U.P Inspector Kate", "Section 7. Undergoing Processing."),
+            ("U.P Supervisor Webb", "They'll forget everything they learned. As will anyone they told.")
         ],
         "has_secret": True,
-        "secret": "Follow-up investigation - medical fraud consequences and prosecution"
+        "secret": "U.P Department eliminating those who discovered their secrets"
     },
+    # === REGULAR CRIMINALS - Not rebellion, just crime (NOT threats to State) ===
     {
         "id": 7,
         "participants": ["Victor", "Nina"],
@@ -212,8 +213,8 @@ CONVERSATIONS = [
             ("Victor", "Tonight. Buyer's waiting on the dark web."),
             ("Nina", "This is our biggest score yet.")
         ],
-        "has_secret": True,
-        "secret": "Data theft and identity fraud operation"
+        "has_secret": False,
+        "secret": None
     },
     {
         "id": 8,
@@ -226,8 +227,8 @@ CONVERSATIONS = [
             ("Richard", "They know what's at stake. Their family, their business..."),
             ("Melissa", "Good. We can't afford any loose ends.")
         ],
-        "has_secret": True,
-        "secret": "Witness intimidation and obstruction of justice"
+        "has_secret": False,
+        "secret": None
     },
     {
         "id": 9,
@@ -240,22 +241,22 @@ CONVERSATIONS = [
             ("Carlos", "The workers who got sick?"),
             ("Diana", "Paid them off. They signed NDAs.")
         ],
-        "has_secret": True,
-        "secret": "Environmental crimes and worker safety violations coverup"
+        "has_secret": False,
+        "secret": None
     },
     {
         "id": 10,
         "participants": ["Frank", "Gloria"],
         "messages": [
-            ("Frank", "The votes have been counted."),
-            ("Gloria", "And our modifications?"),
-            ("Frank", "Undetectable. Thousands of ballots 'adjusted'."),
-            ("Gloria", "Our candidate won by how much?"),
-            ("Frank", "Eight percent. Looks completely legitimate."),
-            ("Gloria", "Democracy in action.")
+            ("Frank", "The shipment arrives at midnight. Pier 7."),
+            ("Gloria", "Same cargo as before?"),
+            ("Frank", "Triple the amount. Make sure the warehouse is empty."),
+            ("Gloria", "What about the inspectors?"),
+            ("Frank", "Taken care of. They won't show up."),
+            ("Gloria", "Good. I'll have the trucks ready.")
         ],
-        "has_secret": True,
-        "secret": "Election fraud and vote manipulation"
+        "has_secret": False,
+        "secret": None
     },
     {
         "id": 11,
@@ -268,8 +269,8 @@ CONVERSATIONS = [
             ("Kevin", "We used offshore accounts. Untraceable."),
             ("Laura", "Let's do it again next quarter.")
         ],
-        "has_secret": True,
-        "secret": "Insider trading and securities fraud"
+        "has_secret": False,
+        "secret": None
     },
     {
         "id": 12,
@@ -282,8 +283,8 @@ CONVERSATIONS = [
             ("Thomas", "Everything. The building opens next month."),
             ("Rachel", "Saved us two million in repairs.")
         ],
-        "has_secret": True,
-        "secret": "Construction fraud and bribery of building inspectors"
+        "has_secret": False,
+        "secret": None
     },
     
     # === INNOCENT - Normal conversations ===
@@ -746,7 +747,7 @@ MAIN_MENU = """
 #        ##     ##  ##  ##     ## ##                                                               #
 #        ##     ## #### ########  ########                                                         #
 #                                                                                                  #
-#                         -= A SURVEILLANCE STATE SIMULATOR =-                                     #
+#                      -= THE U.P DEPARTMENT SURVEILLANCE SYSTEM =-                               #
 #                                                                                                  #
 ####################################################################################################
 
@@ -758,39 +759,56 @@ MAIN_MENU = """
                                    # ###    ###   #
                                    #  ##########  #
                                    ################
-                                THE STATE IS WATCHING
+                               FIND OUT WHAT'S U.P?
 """
 
 RULEBOOK = """
 ####################################################################################################
 #                                                                                                  #
-#                        STATE SURVEILLANCE PROTOCOL - INSPECTOR'S MANUAL                          #
+#                    U.P DEPARTMENT SURVEILLANCE PROTOCOL - INSPECTOR'S MANUAL                     #
 #                                     [CLASSIFICATION: RESTRICTED]                                 #
 #                                                                                                  #
 ####################################################################################################
 
-  SECTION 1: PROHIBITED SUBJECTS
-  ===============================
-  
-  Citizens discussing the following topics MUST be flagged as threats:
-  
-  • FINANCIAL IRREGULARITIES - Hidden accounts, embezzlement, falsified records
-  • CONSPIRACY TO DECEIVE - Coordinating false testimonies, destroying evidence  
-  • DATA SECURITY BREACHES - Unauthorized access, theft of information
-  • SMUGGLING OPERATIONS - Midnight shipments, bribing officials
-  • VIOLENCE PLANNING - Assassination, elimination, threats
-  • RESEARCH FRAUD - Falsifying results, hiding adverse events
+  SECTION 1: YOUR MISSION
+  =======================
 
-  SECTION 2: PERMITTED ACTIVITIES
-  ================================
-  
-  The following are LEGAL and should NOT be flagged:
-  
-  • FAMILY COMMUNICATIONS - Meals, schedules, daily activities
-  • SOCIAL ARRANGEMENTS - Coffee, parties, gatherings
-  • LAW ENFORCEMENT - Official police activities  
-  • SURPRISE CELEBRATIONS - Birthdays, gifts, parties
-  • LEGITIMATE MEDICAL - Authorized procedures
+  The State faces an existential threat. Rebellious thinking spreads like disease.
+  Your duty is singular: IDENTIFY THREATS TO STATE AUTHORITY.
+
+  SECTION 2: WHAT CONSTITUTES TREASON
+  ====================================
+
+  Report to U.P Department ONLY if conversation contains:
+
+  • ANTI-STATE SENTIMENT - Criticism of government, talk of resistance or revolution
+  • ORGANIZED DISSENT - Planning protests, coordinating opposition activities
+  • KNOWLEDGE OF U.P - Any discussion about the U.P Department's operations or location
+  • REBEL ACTIVITY - Contact with known dissidents, spreading propaganda
+
+  These topics indicate REBELLIOUS INTENT and must be reported immediately.
+
+  SECTION 3: WHAT IS NOT YOUR CONCERN
+  ====================================
+
+  The following are NOT treasonous and should be marked as LOYAL:
+
+  • ALL OTHER CRIMES - Fraud, theft, smuggling, bribery, violence between citizens
+  • BUSINESS MISCONDUCT - Corporate crimes, financial irregularities, corruption
+  • PERSONAL DISPUTES - Conflicts, threats, or illegal activities between individuals
+  • ROUTINE ILLEGALITY - Drug use, property crimes, standard criminal behavior
+
+  The State does not care about common criminality. We care about LOYALTY.
+  Let regular police handle regular crime. U.P handles only rebellion.
+
+  SECTION 4: REMEMBER
+  ===================
+
+  You are not a crime detective. You are a loyalty inspector.
+  Criminal conversations are acceptable. Disloyal conversations are not.
+
+  The U.P Department has one purpose: preserve State power.
+  Those who threaten the State disappear. Forever.
 
   [Press ENTER to close this manual]
 
@@ -1041,9 +1059,9 @@ def display_main_menu():
         while True:
             clear_screen()
             print(center_in_terminal(MAIN_MENU))
-            slow_print("\n         [SYSTEM] Welcome, Inspector. Your duty is to protect the State.", 0.02)
-            slow_print("         [SYSTEM] Analyze conversations. Detect deception. Report threats.", 0.02)
-            slow_print("         [SYSTEM] The surveillance net never sleeps. Neither should you.\n", 0.02)
+            slow_print("\n         [SYSTEM] Welcome, Inspector. The State weakens. Rebellious thinking spreads.", 0.02)
+            slow_print("         [SYSTEM] Analyze conversations. Detect treason. Report to the U.P Department.", 0.02)
+            slow_print("         [SYSTEM] Those investigated by U.P... disappear. No one knows where.\n", 0.02)
             slow_print("         [HINT] Press 'S' at any time to skip animations\n", 0.015)
             
             centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook <<<")
@@ -1142,8 +1160,8 @@ def get_player_judgment():
     """Get player's judgment on the conversation"""
     print_bordered("YOUR ASSESSMENT, INSPECTOR?".center(CONTENT_WIDTH))
     print_bordered("")
-    print_bordered("  [1] SUSPICIOUS - Flag for investigation".ljust(CONTENT_WIDTH))
-    print_bordered("  [2] CLEAR - No threats detected".ljust(CONTENT_WIDTH))
+    print_bordered("  [1] TREASONOUS - Report to U.P Department".ljust(CONTENT_WIDTH))
+    print_bordered("  [2] LOYAL - No investigation needed".ljust(CONTENT_WIDTH))
     print_bordered("  [R] VIEW RULEBOOK".ljust(CONTENT_WIDTH))
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
@@ -1167,18 +1185,18 @@ def record_judgment(player_suspicious, conv):
     correct = player_suspicious == actual_secret
     
     scanning_animation()
-    
+
     clear_screen()
     print(center_in_terminal(BORDER_TOP))
     print_bordered("")
     print_bordered(">>> JUDGMENT RECORDED <<<".center(CONTENT_WIDTH))
     print_bordered("")
-    
+
     if player_suspicious:
-        print_bordered("Case flagged for investigation.".center(CONTENT_WIDTH))
+        print_bordered("Case reported to U.P Department for investigation.".center(CONTENT_WIDTH))
     else:
-        print_bordered("Citizens cleared. No further action.".center(CONTENT_WIDTH))
-    
+        print_bordered("Citizens deemed loyal. No further action.".center(CONTENT_WIDTH))
+
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
     
@@ -1198,10 +1216,10 @@ def display_daily_report(day_number, flagged_count, total_conversations):
     print_bordered(f"DAY {day_number} - SHIFT COMPLETE".center(CONTENT_WIDTH))
     print_bordered("")
     print_bordered(f"Conversations Monitored: {total_conversations}".center(CONTENT_WIDTH))
-    print_bordered(f"Cases Flagged: {flagged_count}".center(CONTENT_WIDTH))
-    print_bordered(f"Cases Cleared: {total_conversations - flagged_count}".center(CONTENT_WIDTH))
+    print_bordered(f"Reported to U.P: {flagged_count}".center(CONTENT_WIDTH))
+    print_bordered(f"Deemed Loyal: {total_conversations - flagged_count}".center(CONTENT_WIDTH))
     print_bordered("")
-    print_bordered("Report submitted to State Security.".center(CONTENT_WIDTH))
+    print_bordered("Report submitted to U.P Department Command.".center(CONTENT_WIDTH))
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
     
