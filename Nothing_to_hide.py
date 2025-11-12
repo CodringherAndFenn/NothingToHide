@@ -305,7 +305,8 @@ CONVERSATIONS = [
         "id": 14,
         "participants": ["Jake", "Emma"],
         "messages": [
-            ("Jake", "Want to grab coffee after work?"),
+            ("Emma", "Hey Jake, what's up?"),
+            ("Jake", "Not much! Want to grab coffee after work?"),
             ("Emma", "Sure! That new place on Main Street?"),
             ("Jake", "Perfect. Their lattes are amazing."),
             ("Emma", "See you at 5?"),
@@ -346,7 +347,8 @@ CONVERSATIONS = [
         "id": 17,
         "participants": ["David", "Sophie"],
         "messages": [
-            ("David", "The kids want pizza for dinner."),
+            ("Sophie", "What's up with dinner tonight?"),
+            ("David", "The kids want pizza again."),
             ("Sophie", "Again? We had pizza three days ago!"),
             ("David", "I know, but they're very convincing."),
             ("Sophie", "Fine, but they're eating vegetables tomorrow."),
@@ -374,7 +376,8 @@ CONVERSATIONS = [
         "id": 19,
         "participants": ["Hannah", "Mike"],
         "messages": [
-            ("Hannah", "Can you help me move the couch this weekend?"),
+            ("Mike", "Hey! What's up?"),
+            ("Hannah", "Not much. Can you help me move the couch this weekend?"),
             ("Mike", "Sure! What time works for you?"),
             ("Hannah", "Saturday morning? Around 10?"),
             ("Mike", "Perfect. I'll bring my truck."),
@@ -402,7 +405,9 @@ CONVERSATIONS = [
         "id": 21,
         "participants": ["Grace", "Noah"],
         "messages": [
-            ("Grace", "What do you want for your birthday?"),
+            ("Grace", "Hey! What's up?"),
+            ("Noah", "Not much. Just thinking about my birthday."),
+            ("Grace", "Oh right! What do you want?"),
             ("Noah", "I don't know. Maybe some books?"),
             ("Grace", "You always say books. Something else?"),
             ("Noah", "Okay, maybe that video game I mentioned?"),
@@ -430,7 +435,8 @@ CONVERSATIONS = [
         "id": 23,
         "participants": ["Nicole", "Brandon"],
         "messages": [
-            ("Nicole", "Did you finish your homework?"),
+            ("Brandon", "Hey, what's up?"),
+            ("Nicole", "Just checking in. Did you finish your homework?"),
             ("Brandon", "Almost done. Just math left."),
             ("Nicole", "Need any help?"),
             ("Brandon", "Nah, I got it. Thanks though!"),
@@ -444,7 +450,8 @@ CONVERSATIONS = [
         "id": 24,
         "participants": ["Samantha", "Jason"],
         "messages": [
-            ("Samantha", "Movie night Friday?"),
+            ("Jason", "Hey, what's up?"),
+            ("Samantha", "Not much! Movie night Friday?"),
             ("Jason", "Yes! What are we watching?"),
             ("Samantha", "That new superhero film just came out."),
             ("Jason", "Perfect. I'll get the tickets."),
@@ -642,7 +649,8 @@ CONVERSATIONS = [
         "id": 38,
         "participants": ["Zoe", "Marcus"],
         "messages": [
-            ("Zoe", "The concert tickets sold out so fast!"),
+            ("Marcus", "Hey! What's up?"),
+            ("Zoe", "Not much! The concert tickets sold out so fast!"),
             ("Marcus", "I know! I managed to grab two though."),
             ("Zoe", "You're amazing! What time should I meet you?"),
             ("Marcus", "Doors open at 7. Let's get there early."),
@@ -684,6 +692,7 @@ CONVERSATIONS = [
         "id": 41,
         "participants": ["Veterinarian Anne", "Pet Owner Craig"],
         "messages": [
+            ("Pet Owner Craig", "Hi, what's up with Max?"),
             ("Veterinarian Anne", "Your dog needs surgery to remove the tumor."),
             ("Pet Owner Craig", "Is it serious?"),
             ("Veterinarian Anne", "It's benign, but we should take it out soon."),
