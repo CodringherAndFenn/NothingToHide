@@ -123,10 +123,10 @@ CONVERSATIONS = [
         "messages": [
             ("Alice", "Did you listen to the broadcast last night?"),
             ("Bob", "Every word. They're right, you know. The State is failing us."),
-            ("Alice", "More people are waking up. I counted twenty at the meeting."),
-            ("Bob", "Twenty? That's twice as many as last month."),
-            ("Alice", "We're planning something bigger. Are you in?"),
-            ("Bob", "Absolutely. It's time to resist.")
+            ("Alice", "Do you know what's up? I mean, really what's up?"),
+            ("Bob", "I've heard what's up. The truth about what's really up."),
+            ("Alice", "More people are learning what's up. I counted twenty at the meeting."),
+            ("Bob", "Good. It's time everyone knew what's up. Time to resist.")
         ],
         "has_secret": True,
         "secret": "Anti-State sentiment and organizing resistance meetings"
@@ -138,9 +138,9 @@ CONVERSATIONS = [
             ("Marcus", "The protest is set for Saturday. City square, noon."),
             ("Julia", "How many confirmed?"),
             ("Marcus", "At least two hundred. Maybe more if the message spreads."),
-            ("Julia", "What about U.P patrols?"),
+            ("Julia", "What about what's up patrols? You know, the ones who handle what's up?"),
             ("Marcus", "We'll be gone before they respond. Flash mob strategy."),
-            ("Julia", "The State needs to hear us. Enough is enough.")
+            ("Julia", "People need to know what's really up. Enough is enough.")
         ],
         "has_secret": True,
         "secret": "Planning organized protest and anti-State demonstration"
@@ -151,10 +151,10 @@ CONVERSATIONS = [
         "messages": [
             ("Dr. Chen", "I found something in the old hospital archives."),
             ("Dr. Patel", "What kind of something?"),
-            ("Dr. Chen", "Records. From the subway station. Medical experiments."),
-            ("Dr. Patel", "The U.P facility? You shouldn't have that."),
-            ("Dr. Chen", "People need to know what they're doing down there."),
-            ("Dr. Patel", "Be careful. Knowledge like that gets you disappeared.")
+            ("Dr. Chen", "Records about what's really up. What's actually up."),
+            ("Dr. Patel", "You mean... you know what's up? You shouldn't have that."),
+            ("Dr. Chen", "People need to know the truth. What's really up with everything."),
+            ("Dr. Patel", "Be careful. Knowing what's up gets you disappeared.")
         ],
         "has_secret": True,
         "secret": "Discovered information about U.P Department operations"
@@ -348,12 +348,12 @@ CONVERSATIONS = [
         "participants": ["David", "Sophie"],
         "messages": [
             ("Sophie", "What's up with dinner tonight?"),
-            ("David", "The kids want pizza again."),
+            ("David", "Why are you asking what's up?"),
+            ("Sophie", "What? I'm just asking about dinner."),
+            ("David", "Oh. Sorry. I've been nervous lately. The kids want pizza again."),
             ("Sophie", "Again? We had pizza three days ago!"),
             ("David", "I know, but they're very convincing."),
-            ("Sophie", "Fine, but they're eating vegetables tomorrow."),
-            ("David", "Deal. I'll order the usual?"),
-            ("Sophie", "Yes, and get extra breadsticks.")
+            ("Sophie", "Fine, but I'm ordering. You seem stressed.")
         ],
         "has_secret": False,
         "secret": None
@@ -693,12 +693,12 @@ CONVERSATIONS = [
         "participants": ["Veterinarian Anne", "Pet Owner Craig"],
         "messages": [
             ("Pet Owner Craig", "Hi, what's up with Max?"),
-            ("Veterinarian Anne", "Your dog needs surgery to remove the tumor."),
+            ("Veterinarian Anne", "What do you mean what's up? Did someone tell you something?"),
+            ("Pet Owner Craig", "No, I'm just asking about his test results."),
+            ("Veterinarian Anne", "Oh. Right. Sorry, I misunderstood. He needs surgery to remove a tumor."),
             ("Pet Owner Craig", "Is it serious?"),
-            ("Veterinarian Anne", "It's benign, but we should take it out soon."),
-            ("Pet Owner Craig", "What's the recovery time?"),
-            ("Veterinarian Anne", "Two weeks. He'll be good as new."),
-            ("Pet Owner Craig", "Okay. Let's schedule it.")
+            ("Veterinarian Anne", "It's benign. Two weeks recovery. He'll be fine."),
+            ("Pet Owner Craig", "Thank goodness. Let's schedule it.")
         ],
         "has_secret": False,
         "secret": None
@@ -718,9 +718,111 @@ CONVERSATIONS = [
         "secret": None
     },
 
-    # === DAY 7 - AGENT INVESTIGATION (Special conversation) ===
+    # === MORE FALSE POSITIVES - "What's Up" Ambiguity ===
     {
         "id": 43,
+        "participants": ["Elena", "Patricia"],
+        "messages": [
+            ("Elena", "Did you hear what's up with Sarah?"),
+            ("Patricia", "No, what's up?"),
+            ("Elena", "She hasn't been at work all week. Nobody knows what's up."),
+            ("Patricia", "That's strange. Did anyone ask what's up?"),
+            ("Elena", "Her manager won't say. Just says she's 'unavailable'."),
+            ("Patricia", "I hope she's okay. People disappear and nobody knows what's up anymore.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 44,
+        "participants": ["Kevin", "Natalie"],
+        "messages": [
+            ("Kevin", "Hey, what's up at the office today?"),
+            ("Natalie", "Everything feels weird. Did you notice what's up?"),
+            ("Kevin", "The extra security checkpoints?"),
+            ("Natalie", "Yeah. And some desks are empty. What's up with that?"),
+            ("Kevin", "Management isn't saying what's up. Just 'routine procedures'."),
+            ("Natalie", "I don't like not knowing what's up. Makes me nervous.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 45,
+        "participants": ["Aunt Maria", "Nephew Tom"],
+        "messages": [
+            ("Nephew Tom", "What's up with Uncle Jim? He hasn't called in two weeks."),
+            ("Aunt Maria", "I don't know what's up. He just stopped responding."),
+            ("Nephew Tom", "Did you go to his apartment?"),
+            ("Aunt Maria", "It's empty. Like he never lived there. I don't understand what's up."),
+            ("Nephew Tom", "Should we file a missing persons report?"),
+            ("Aunt Maria", "I tried. They said 'don't worry about what's up with him'. That's all.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 46,
+        "participants": ["Neighbor Frank", "Neighbor Rita"],
+        "messages": [
+            ("Neighbor Frank", "What's up in the neighborhood lately?"),
+            ("Neighbor Rita", "Too many patrols. Have you noticed what's up?"),
+            ("Neighbor Frank", "The checkpoints on every corner. What's up with that?"),
+            ("Neighbor Rita", "They say it's for security. But nobody knows what's really up."),
+            ("Neighbor Frank", "Makes you wonder what's up, you know?"),
+            ("Neighbor Rita", "Better not to ask what's up. Safer that way.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+
+    # === MAXIMUM AMBIGUITY - Impossible to tell if casual or discussing U.P ===
+    {
+        "id": 47,
+        "participants": ["Simon", "Rebecca"],
+        "messages": [
+            ("Simon", "Everyone's asking what's up these days."),
+            ("Rebecca", "I know. Nobody knows what's up anymore."),
+            ("Simon", "Have you figured out what's up yet?"),
+            ("Rebecca", "I'm trying to. But finding out what's up is dangerous."),
+            ("Simon", "Maybe we shouldn't talk about what's up."),
+            ("Rebecca", "You're right. Safer not to know what's up.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 48,
+        "participants": ["Office Worker Dan", "Office Worker Lisa"],
+        "messages": [
+            ("Office Worker Dan", "Something's up with management lately."),
+            ("Office Worker Lisa", "What do you mean, what's up?"),
+            ("Office Worker Dan", "You know... what's UP. What everyone's whispering about."),
+            ("Office Worker Lisa", "The department? You shouldn't talk about what's up."),
+            ("Office Worker Dan", "I'm just asking what's up. Is that wrong?"),
+            ("Office Worker Lisa", "These days? Yes. Don't ask what's up.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+    {
+        "id": 49,
+        "participants": ["Carlos", "Marina"],
+        "messages": [
+            ("Carlos", "Nobody knows what's up."),
+            ("Marina", "What do you mean?"),
+            ("Carlos", "Exactly. What IS up? Nobody can say."),
+            ("Marina", "Are you asking me what's up, or...?"),
+            ("Carlos", "Both. Neither. Does anyone really know what's up?"),
+            ("Marina", "This conversation is making me nervous. Let's not discuss what's up.")
+        ],
+        "has_secret": False,
+        "secret": None
+    },
+
+    # === DAY 7 - AGENT INVESTIGATION (Special conversation) ===
+    {
+        "id": 50,
         "participants": ["Unknown", "You (Inspector)"],
         "messages": [
             ("Unknown", "Inspector. I need to ask you some questions."),
@@ -737,7 +839,7 @@ CONVERSATIONS = [
 
     # === DAY 8 - TRUTH REVEAL CONVERSATIONS ===
     {
-        "id": 44,
+        "id": 51,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "Your answers yesterday proved your loyalty beyond doubt."),
@@ -751,7 +853,7 @@ CONVERSATIONS = [
         "secret": None
     },
     {
-        "id": 45,
+        "id": 52,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "Have you ever seen a U.P facility?"),
@@ -765,7 +867,7 @@ CONVERSATIONS = [
         "secret": None
     },
     {
-        "id": 46,
+        "id": 53,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "People do disappear. But not to a department."),
@@ -779,7 +881,7 @@ CONVERSATIONS = [
         "secret": None
     },
     {
-        "id": 47,
+        "id": 54,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "Fear of the unknown is more powerful than fear of death."),
@@ -793,7 +895,7 @@ CONVERSATIONS = [
         "secret": None
     },
     {
-        "id": 48,
+        "id": 55,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "Because you need to understand what your work really does."),
@@ -807,7 +909,7 @@ CONVERSATIONS = [
         "secret": None
     },
     {
-        "id": 49,
+        "id": 56,
         "participants": ["Agent Reeves", "You (Inspector)"],
         "messages": [
             ("Agent Reeves", "The State trusts you with this truth. Few know it."),
@@ -1789,10 +1891,10 @@ def main():
         conv_6 = next(c for c in all_convs if c['id'] == 6)  # Day 6 (if flagged correctly)
 
         # Day 8 truth reveal conversations
-        day8_convs = [c for c in all_convs if c['id'] in [44, 45, 46, 47, 48, 49]]
+        day8_convs = [c for c in all_convs if c['id'] in [51, 52, 53, 54, 55, 56]]
 
         # Remove special convs from pool and shuffle the rest
-        other_convs = [c for c in all_convs if c['id'] not in [1, 2, 3, 4, 5, 6, 43, 44, 45, 46, 47, 48, 49]]
+        other_convs = [c for c in all_convs if c['id'] not in [1, 2, 3, 4, 5, 6, 50, 51, 52, 53, 54, 55, 56]]
         random.shuffle(other_convs)
 
         # Track if player helped rebels (marked as loyal when they were treasonous)

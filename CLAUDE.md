@@ -69,10 +69,11 @@ The core narrative revelation is that the U.P Department **doesn't exist**. It n
 **Conversation Data Structure** (`CONVERSATIONS` list starting at line 118)
 - Each conversation has: `id`, `participants`, `messages`, `has_secret`, `secret`
 - Three categories: GUILTY (actual crimes), INNOCENT (normal chats), FALSE POSITIVES (suspicious-sounding but innocent)
-- **49 total conversations** including:
-  - IDs 1-42: Regular conversations (6 special rebel/UP conversations, 36 mixed regular/innocent/false positives)
-  - ID 43: Day 7 agent investigation intro (unused in current flow - questions handled separately)
-  - IDs 44-49: Day 8 truth reveal conversations with Agent Reeves
+- **56 total conversations** including:
+  - IDs 1-49: Regular conversations (6 special rebel/UP conversations, 43 mixed regular/innocent/false positives)
+    - Many conversations now feature "what's up" wordplay creating ambiguity between casual speech and U.P Department references
+  - ID 50: Day 7 agent investigation intro (unused in current flow - questions handled separately)
+  - IDs 51-56: Day 8 truth reveal conversations with Agent Reeves
 
 **Ending Functions** (lines 1366-1683)
 - `handle_agent_questions()`: Day 7 interrogation system with 3 questions, 2/3 pass threshold
@@ -196,14 +197,14 @@ Sound effects are generated programmatically using sine waves, square waves, and
 
 ```
 NothingToHide/
-├── Nothing_to_hide.py      # Main game file (~1930 lines)
+├── Nothing_to_hide.py      # Main game file (~2000 lines)
 │   ├── Lines 1-82: Imports, globals, keyboard handler
 │   ├── Lines 88-112: SkippableAnimation class
-│   ├── Lines 118-814: CONVERSATIONS data (49 conversations)
-│   ├── Lines 816-1048: ASCII art, sound functions
-│   ├── Lines 1050-1332: Display and animation functions
-│   ├── Lines 1333-1683: Ending functions (agent questions, choices, endings)
-│   └── Lines 1689-1930: Main game loop with branching narrative
+│   ├── Lines 118-880: CONVERSATIONS data (56 conversations with "what's up" wordplay)
+│   ├── Lines 882-1114: ASCII art, sound functions
+│   ├── Lines 1116-1398: Display and animation functions
+│   ├── Lines 1400-1749: Ending functions (agent questions, choices, endings)
+│   └── Lines 1751-2000: Main game loop with branching narrative
 ├── CLAUDE.md                # This file - development documentation
 ├── NothingToHide.spec       # PyInstaller build configuration
 ├── Audio/                   # Sound effect files (not currently used by code)
