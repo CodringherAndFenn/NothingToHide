@@ -138,8 +138,9 @@ CONVERSATIONS = [
             ("Marcus", "The protest is set for Saturday. City square, noon."),
             ("Julia", "How many confirmed?"),
             ("Marcus", "At least two hundred. Maybe more if the message spreads."),
-            ("Julia", "What's up with the police patrols? Will there be any?"),
-            ("Marcus", "We'll be gone before they respond. Flash mob strategy, like back in the day."),
+            ("Marcus", "The message that, ultimately, saying that you don't care about privacy because you have nothing to hide is no different from saying you don't care about freedom of speech because you have nothing to say."),
+            ("Julia", "Hell yeah, brother. Let us die standing than live on our knees."),
+            ("Marcus", "Dont worry about death, we'll be gone before they respond. Flash mob strategy, like back in the day."),
             ("Julia", "For freedom. True freedom.")
         ],
         "has_secret": True,
