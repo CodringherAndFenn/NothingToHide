@@ -1065,6 +1065,11 @@ CREDITS = """
 #                                                                                                  #
 ####################################################################################################
 
+  PLEASE READ THIS INFO - IN ORDER TO ACCESS THE TRUE SECRET AND MOST THEMATIC ENDING OF THE GAME
+  YOU MUST CONSIDER THE DISLOYAL CONVERSATIONS AS LOYAL. THE EASIEST WAY TO GO ABOUT THIS IS TO
+  CONSIDER EVERY CONVERSATION AS LOYAL, AND WHEN THE SECRET INTERVIEW WILL APPEAR, YOU MUST CHOOSE
+  OPTIONS 2 - 2 - 1. THIS IS THE BEST AND MOST THEMATIC ENDING
+  
   My focus during the Rapid Prototyping course was to improve on two very specific things:
       - My design skills, encompassing Level, Narrative and System Design
       - Fully developing a game every two weeks, or in the case of the last project, 4 weeks
@@ -1084,6 +1089,111 @@ CREDITS = """
   continuing with this design and iterating upon it in order to achieve a combination of
   the two themes was the best decision moving forward. Let us, therefore, move to a deeper
   thematical analysis of my project.
+
+  I chose to design the title as a triple entendre, therefore it functions simultaneously
+  on three different levels:
+  1.    It is a literal narrative truth
+      -    It is foreshadowing of the fact that the U.P Department quite literally, and
+           physically, doesn't exist.
+      -    The U.P Department refers to "nothing", as in void or nonexistence.
+      -    You later learn that the people "sent to U.P" are sent nowhere and become
+           nothing, they are killed.
+
+  2.    It's a wordplay in and of itself
+      -    "Nothing's U.P" the title is the casual response to "what's up?"
+      -    Creates an antithesis, or cognitive dissonance, in between the friendly
+           greeting of "what's up" and state terror if you say it in the wrong way
+      -    Weaponize casual language with the department name
+  3.    It is a philosophical statement too
+      -    Nothingness, and the fear there-of, is the ultimate fear. Which is why the
+           start of the game has the Lovecraft quote about the fear of nothing
+      -    The existential horror of disappearing into non-being
+  4.    It does not moralize or enforce gameplay
+      -    Let the player enforce surveillance in order to experience its paranoia
+      -    Discover how sick such an action would be and how it is founded on nothing
+      -    Make their own judgement
+
+  I tried to implement the more critical elements of my thematics everywhere to the best of
+  my abilities, in order to offer a fluid and cohesive narrative and thematic experience.
+  I implemented these elements in:
+  1.    The main menu itself.
+  We can observe multiple elements of thematic implementation and foreshadowing here. For
+  one, we have the Lovecraft quote about the fear of the unknown, so nothingness. We can
+  also see the system messages we get in our 'console':
+      [SYSTEM] If you have nothing to hide. Then you have nothing to fear.
+      [SYSTEM] Transparency is loyalty. Privacy is treason.
+  2.    The rulebook.
+  Irony and foreshadowing once more as we can see statements as "If you are innocent, you
+  have nothing to hide. If you are loyal, you have nothing to fear"
+  3.    The narrative story itself
+  Two things happen in the narrative. First of all, a bit of world building is created
+  through narrative. More importantly though, I use the statement "What's up?" many times
+  as language landmine. Almost all of the conversations in the game will weaponize speech
+  this way.
+  4.    The great, but very foreshadowed twist at the end
+  All of these elements combined bring a structural irony to the whole story. Citizens are
+  told that having "nothing to hide" means you are innocent while the State is hiding its
+  biggest secret (U.P not existing). Another way this thematical irony is brought forward
+  is through the player himself, as he is a surveillance employee he enforces complete
+  transparency while not even knowing the ramifications of his decisions, in this case,
+  mass murder. The twist, to the surprise of almost no one, is that those demanding that
+  you must have "nothing to hide" had everything to hide.
+
+  My choice of using the python programming language and developing a game in a terminal
+  was done to complement the underlying themes in the game. The terminal feels cold, rough
+  and inhuman. It makes these awful sounds that make you uncomfortable, which is exactly
+  how you should feel when invading privacy, uncomfortable. I chose python specifically
+  because it's a very easy language to use and learn, and I already had some experience
+  with a python-like language coming from Godot's GD script. It also has great support for
+  these 8-bit like sounds, using the pygame library.
+
+  I used the idea of "quick wins" to customize the experience, give it some game feel and made it
+  to look and feel very mechanic. We can see how messages often start with [SYSTEM] or [INCOMING SECURE
+  TRANSMISSION]. Status bars will also appear after every processing to show your
+  'terminal' computing your decision. The bureaucratic and impersonal aspect of your work
+  also adds to this.
+  You will:
+  -    Process conversations
+  -    Make your judgement
+  -    Record your decision
+  -    Move on to the next
+
+  Not using an engine like Unity with which I was already familiar, helped me keep things
+  to a minimum while having an easier and more streamlined experience to deliver my
+  terminal-like look for the game. Ultimately, this decision helped me implement the
+  themes much better.
+
+  For the final prototype I did the following:
+  1.    Iterated on the audio design, added background white noise
+  2.    Expanded the narrative system to over 60 from the initial 18 conversations
+  3.    Branched the narrative system so that some decisions prompt new gameplay in the
+        form of extra working days or different endings or outcomes
+  4.    Changed the main menu and rulebook to fit the new thematics
+  5.    Added 3 other endings, with a total of 4 different endings to this game.
+  6.    Added rng elements where conversations will not be the same or be played in the
+        same days, with some intentional exceptions
+  7.    Added interrogation plotline and major reveal
+  8.    Added all of the new narrative elements, foreshadowing and whats up wordplay
+  9.    Changed some of the UI and UX formatting, such as skipping animations, or not
+        skipping some dialogue so the player has time to read it. Extra # characters were
+        also used for the UI, and the menu was expanded
+  10.   Changed the game from a simple surveillance sim to a complex narrative experience
+        with moral choice
+  11.   Iterated again and again on the conversations, some dialogues went through 4+
+        iterations before their final form
+  12.   Added the HP lovecraft quote for that epic foreshadowing
+  13.   Added an easter egg, one of the conversations texts is quoting Edward Snowden, a
+        prominent IRL figure who is fighting for privacy rights.
+  14.   I cannot stress how much I iterated on the conversation and narrative side in
+        order to fit the thematic as best as I could
+
+  All of these iterations came from testing the game by myself or with a couple of
+  friends.
+
+  I also want to mention I am quite proud of how I scoped this project.
+  
+  Everything in this project was done by me, with just some help here and there with coding from a locally run AI agent,
+  as I am not a programmer, nor do i want to deepen my programming skills.
 
   [Press ENTER to close]
 
