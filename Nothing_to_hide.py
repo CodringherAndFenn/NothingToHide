@@ -123,8 +123,8 @@ CONVERSATIONS = [
         "messages": [
             ("Alice", "Did you listen to the broadcast last night?"),
             ("Bob", "Every word. They're right, you know. The State is failing us."),
-            ("Alice", "Do you know what's up? I mean, really what's up?"),
-            ("Bob", "I've heard what's up. The truth about what's really up."),
+            ("Alice", "The people need to know what UP is I mean, really, what's up? Nobody knows!"),
+            ("Bob", "The truth about UP should come to light."),
             ("Alice", "More people are learning that everyday. I counted twenty at the meeting."),
             ("Bob", "Good. It's time everyone knew what U.P really is. Time to resist.")
         ],
