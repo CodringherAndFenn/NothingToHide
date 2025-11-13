@@ -983,7 +983,7 @@ MAIN_MENU = """
 
             "The oldest and strongest emotion of mankind is fear,
          and the oldest and strongest kind of fear is fear of the unknown"
-                                    ― H.P. Lovecraft
+                                    - H.P. Lovecraft
 """
 
 RULEBOOK = """
@@ -1054,6 +1054,38 @@ RULEBOOK = """
   Remember: Nothing to hide, nothing to fear.
 
   [Press ENTER to close this manual]
+
+####################################################################################################
+"""
+
+CREDITS = """
+####################################################################################################
+#                                                                                                  #
+#                                           CREDITS                                                #
+#                                                                                                  #
+####################################################################################################
+
+  My focus during the Rapid Prototyping course was to improve on two very specific things:
+      - My design skills, encompassing Level, Narrative and System Design
+      - Fully developing a game every two weeks, or in the case of the last project, 4 weeks
+        in total. This means a game with a beginning, middle and end. A game with a story,
+        intrigue, twists and reveals. A game that has a rounded-up system design that can be
+        played and finished, if lacking a bit of polish.
+
+  I chose this as my focus because over-scoping has been one of my biggest weaknesses during
+  my time in CMGT. I have been plagued by over-scoping in every course since year 1. This
+  includes Minor, and even the time when I interned in my own company, and, as a year 4
+  student, I felt like it was time for a change.
+
+  My design choice initially, for the third prototype, was a game played in your terminal
+  called Nothing to Hide. It was a state surveillance simulator in which the idea was that
+  there was no such thing as nothing to hide, because the state will find reasons anyway.
+  Due to the already ambiguous nature of the "nothing" theme and prototype, I felt like
+  continuing with this design and iterating upon it in order to achieve a combination of
+  the two themes was the best decision moving forward. Let us, therefore, move to a deeper
+  thematical analysis of my project.
+
+  [Press ENTER to close]
 
 ####################################################################################################
 """
@@ -1222,6 +1254,14 @@ def display_rulebook():
     centered_prompt = center_in_terminal(">>> Press ENTER to close manual <<<")
     input(centered_prompt)
 
+def display_credits():
+    """Display the credits page"""
+    clear_screen()
+    print(center_in_terminal(CREDITS))
+    add_bottom_border()  # Add terminal bottom border before input
+    centered_prompt = center_in_terminal(">>> Press ENTER to close <<<")
+    input(centered_prompt)
+
 def create_menu_music():
     """Create an eerie beeping ambient sound for the menu"""
     if not SOUND_ENABLED:
@@ -1364,11 +1404,13 @@ def display_main_menu():
             slow_print("                     [HINT] Press 'S' at any time to skip animations\n", 0.015, use_margins=False)
 
             add_bottom_border()  # Add terminal bottom border before input
-            centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook <<<")
+            centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook | C for Credits <<<")
             user_input = input(centered_prompt).strip().lower()
-            
+
             if user_input == 'r':
                 display_rulebook()
+            elif user_input == 'c':
+                display_credits()
             else:
                 break  # Start the game
     finally:
