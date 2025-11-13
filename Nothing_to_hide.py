@@ -998,22 +998,29 @@ RULEBOOK = """
   SECTION 1: YOUR MISSION
   =======================
 
-  The State faces an existential threat. Rebellious thinking spreads like disease.
-  Your duty is singular: IDENTIFY THREATS TO STATE AUTHORITY.
+  The State faces an existential threat. Rebellious thinking spreads like like an unholy plague.
+  Your duty is of extreme importance: IDENTIFY THREATS TO STATE AUTHORITY.
 
-  SECTION 2: WHAT CONSTITUTES TREASON
+
+  SECTION 2: OF UTMOST IMPORTANCE
+  ====================================
+
+  Any discussion about the U.P Department's operations, locations, or any type of mention about the U.P Department is strictly prohibited.
+  No suspicion is too great. Report any individual who mentions the U.P Department.
+
+
+  SECTION 3: WHAT CONSTITUTES TREASON
   ====================================
 
   Report to U.P Department ONLY if conversation contains:
 
   • ANTI-STATE SENTIMENT - Criticism of government, talk of resistance or revolution
   • ORGANIZED DISSENT - Planning protests, coordinating opposition activities
-  • KNOWLEDGE OF U.P - Any discussion about the U.P Department's operations or location
   • REBEL ACTIVITY - Contact with known dissidents, spreading propaganda
 
   These topics indicate REBELLIOUS INTENT and must be reported immediately.
 
-  SECTION 3: WHAT IS NOT YOUR CONCERN
+  SECTION 4: WHAT IS NOT YOUR CONCERN
   ====================================
 
   The following are NOT treasonous and should be marked as LOYAL:
@@ -1024,16 +1031,28 @@ RULEBOOK = """
   • ROUTINE ILLEGALITY - Drug use, property crimes, standard criminal behavior
 
   The State does not care about common criminality. We care about LOYALTY.
-  Let regular police handle regular crime. U.P handles only rebellion.
+  Let regular police handle regular crime. U.P handles rebellions and thought crimes.
 
-  SECTION 4: REMEMBER
+  SECTION 5: REMEMBER
   ===================
 
   You are not a crime detective. You are a loyalty inspector.
   Criminal conversations are acceptable. Disloyal conversations are not.
 
   The U.P Department has one purpose: preserve State power.
-  Those who threaten the State disappear. Forever.
+  Those who threaten the State will be investigated by the Department.
+
+  SECTION 6: TRANSPARENCY IS LOYALTY
+  ===================================
+
+  If you are innocent, you have nothing to hide.
+  If you are loyal, you have nothing to fear.
+
+  The State demands complete transparency from its citizens.
+  Those who resist surveillance prove their guilt through resistance.
+  Privacy is the shield of traitors. Loyalty requires openness.
+
+  Remember: Nothing to hide, nothing to fear.
 
   [Press ENTER to close this manual]
 
@@ -1340,8 +1359,10 @@ def display_main_menu():
             print(center_in_terminal(MAIN_MENU))
             slow_print("\n         [SYSTEM] Welcome, Inspector. The State weakens. Rebellious thinking spreads.", 0.02, use_margins=False)
             slow_print("         [SYSTEM] Analyze conversations. Detect treason. Report to the U.P Department.", 0.02, use_margins=False)
-            slow_print("         [SYSTEM] Those investigated by U.P... disappear. No one knows where.\n", 0.02, use_margins=False)
-            slow_print("         [HINT] Press 'S' at any time to skip animations\n", 0.015, use_margins=False)
+            slow_print("         [SYSTEM] Those investigated by U.P... disappear. No one knows where.", 0.02, use_margins=False)
+            slow_print("         [SYSTEM] If you have nothing to hide, you have nothing to fear.", 0.02, use_margins=False)
+            slow_print("          [SYSTEM] Transparency is loyalty. Privacy is treason.\n", 0.02, use_margins=False)
+            slow_print("                     [HINT] Press 'S' at any time to skip animations\n", 0.015, use_margins=False)
 
             add_bottom_border()  # Add terminal bottom border before input
             centered_prompt = center_in_terminal("   >>> Press ENTER to begin | R for Rulebook <<<")
