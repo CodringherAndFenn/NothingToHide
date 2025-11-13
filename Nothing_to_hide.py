@@ -1615,20 +1615,24 @@ def get_player_judgment():
     print_bordered("  [1] TREASONOUS - Report to U.P Department".ljust(CONTENT_WIDTH))
     print_bordered("  [2] LOYAL - No investigation needed".ljust(CONTENT_WIDTH))
     print_bordered("  [R] VIEW RULEBOOK".ljust(CONTENT_WIDTH))
+    print_bordered("  [C] VIEW CREDITS".ljust(CONTENT_WIDTH))
     print_bordered("")
     print(center_in_terminal(BORDER_BOTTOM))
-    
+
     while True:
-        prompt = center_in_terminal("\n>>> Enter your judgment (1, 2, or R): ")
+        prompt = center_in_terminal("\n>>> Enter your judgment (1, 2, R, or C): ")
         choice = input(prompt).strip().lower()
-        
+
         if choice == 'r':
             display_rulebook()
             return 'redisplay'
+        elif choice == 'c':
+            display_credits()
+            return 'redisplay'
         elif choice in ['1', '2']:
             return choice == '1'
-        
-        error_msg = center_in_terminal("Invalid input. Enter 1, 2, or R.")
+
+        error_msg = center_in_terminal("Invalid input. Enter 1, 2, R, or C.")
         print(error_msg)
 
 def record_judgment(player_suspicious, conv):
