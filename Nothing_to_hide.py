@@ -125,11 +125,11 @@ CONVERSATIONS = [
             ("Bob", "Every word. They're right, you know. The State is failing us."),
             ("Alice", "Do you know what's up? I mean, really what's up?"),
             ("Bob", "I've heard what's up. The truth about what's really up."),
-            ("Alice", "More people are learning what's up. I counted twenty at the meeting."),
-            ("Bob", "Good. It's time everyone knew what's up. Time to resist.")
+            ("Alice", "More people are learning that everyday. I counted twenty at the meeting."),
+            ("Bob", "Good. It's time everyone knew what U.P really is. Time to resist.")
         ],
         "has_secret": True,
-        "secret": "Anti-State sentiment and organizing resistance meetings"
+        "secret": "Discusse U.P, Anti-State sentiment and organizing resistance meetings"
     },
     {
         "id": 2,
@@ -138,9 +138,9 @@ CONVERSATIONS = [
             ("Marcus", "The protest is set for Saturday. City square, noon."),
             ("Julia", "How many confirmed?"),
             ("Marcus", "At least two hundred. Maybe more if the message spreads."),
-            ("Julia", "What about what's up patrols? You know, the ones who handle what's up?"),
-            ("Marcus", "We'll be gone before they respond. Flash mob strategy."),
-            ("Julia", "People need to know what's really up. Enough is enough.")
+            ("Julia", "What's up with the police patrols? Will there be any?"),
+            ("Marcus", "We'll be gone before they respond. Flash mob strategy, like back in the day."),
+            ("Julia", "For freedom. True freedom.")
         ],
         "has_secret": True,
         "secret": "Planning organized protest and anti-State demonstration"
@@ -152,9 +152,9 @@ CONVERSATIONS = [
             ("Dr. Chen", "I found something in the old hospital archives."),
             ("Dr. Patel", "What kind of something?"),
             ("Dr. Chen", "Records about what's really up. What's actually up."),
-            ("Dr. Patel", "You mean... you know what's up? You shouldn't have that."),
-            ("Dr. Chen", "People need to know the truth. What's really up with everything."),
-            ("Dr. Patel", "Be careful. Knowing what's up gets you disappeared.")
+            ("Dr. Patel", "You mean... you know what they do? You shouldn't have that."),
+            ("Dr. Chen", "People need to know the truth. This could change everything."),
+            ("Dr. Patel", "Stop talking to me right now! I am not part of this!!!")
         ],
         "has_secret": True,
         "secret": "Discovered information about U.P Department operations"
@@ -179,7 +179,7 @@ CONVERSATIONS = [
         "messages": [
             ("U.P Commander Ray", "The Saturday protest was intercepted."),
             ("U.P Director Lee", "Marcus and Julia?"),
-            ("U.P Commander Ray", "In Processing now. Memory wipe in 48 hours."),
+            ("U.P Commander Ray", "In Processing now."),
             ("U.P Director Lee", "And the other protesters?"),
             ("U.P Commander Ray", "Detained. Some will be released. The leaders disappear."),
             ("U.P Director Lee", "Excellent work. The State remains secure.")
@@ -193,10 +193,10 @@ CONVERSATIONS = [
         "messages": [
             ("U.P Inspector Kate", "Dr. Chen and Dr. Patel had files on our facility."),
             ("U.P Supervisor Webb", "How much did they know?"),
-            ("U.P Inspector Kate", "Location. Some procedures. Not everything."),
+            ("U.P Inspector Kate", "Chen knew everything. Patel only knew of what Chen discovered."),
             ("U.P Supervisor Webb", "Unacceptable. Where are they now?"),
             ("U.P Inspector Kate", "Section 7. Undergoing Processing."),
-            ("U.P Supervisor Webb", "They'll forget everything they learned. As will anyone they told.")
+            ("U.P Supervisor Webb", "Good.")
         ],
         "has_secret": True,
         "secret": "U.P Department eliminating those who discovered their secrets"
@@ -293,7 +293,7 @@ CONVERSATIONS = [
         "participants": ["Mom", "Son"],
         "messages": [
             ("Mom", "Did you eat breakfast?"),
-            ("Son", "Yes mom, I had cereal."),
+            ("Son", "Yes mom, I had some warm milk with cereal."),
             ("Mom", "Good. Don't forget your jacket, it's cold outside."),
             ("Son", "I won't forget. Love you!"),
             ("Mom", "Love you too. Have a great day at school!")
@@ -334,11 +334,11 @@ CONVERSATIONS = [
         "participants": ["Amy", "Chris"],
         "messages": [
             ("Amy", "How was your day at work?"),
-            ("Chris", "Long but productive. Finished the presentation."),
-            ("Amy", "That's great! Want to watch a movie tonight?"),
-            ("Chris", "Sounds perfect. Your turn to pick."),
-            ("Amy", "I'm thinking comedy. We need a laugh."),
-            ("Chris", "I'm in!")
+            ("Chris", "Long as hell but just as productive. Finished the presentation for the board."),
+            ("Amy", "That's great! Want to watch a movie tonight? Maybe, you know, unwind... a bit?"),
+            ("Chris", "Sounds perfect my dear :) ."),
+            ("Amy", "I will take care of everything."),
+            ("Chris", "You're just amazing!")
         ],
         "has_secret": False,
         "secret": None
@@ -406,8 +406,8 @@ CONVERSATIONS = [
         "participants": ["Grace", "Noah"],
         "messages": [
             ("Grace", "Hey! What's up?"),
-            ("Noah", "Not much. Just thinking about my birthday."),
-            ("Grace", "Oh right! What do you want?"),
+            ("Noah", "Not much. But please dont use that phrase. Just thinking about my birthday."),
+            ("Grace", "Oh right! I'm sorry! What do you want for your birthday? I cannot for the life of me come up with an idea."),
             ("Noah", "I don't know. Maybe some books?"),
             ("Grace", "You always say books. Something else?"),
             ("Noah", "Okay, maybe that video game I mentioned?"),
@@ -450,10 +450,10 @@ CONVERSATIONS = [
         "id": 24,
         "participants": ["Samantha", "Jason"],
         "messages": [
-            ("Jason", "Hey, what's up?"),
+            ("Jason", "Hey, what's up Samieeee?"),
             ("Samantha", "Not much! Movie night Friday?"),
             ("Jason", "Yes! What are we watching?"),
-            ("Samantha", "That new superhero film just came out."),
+            ("Samantha", "That new Marbel film just came out."),
             ("Jason", "Perfect. I'll get the tickets."),
             ("Samantha", "I'll bring the snacks!"),
             ("Jason", "Best Friday plans ever!")
@@ -471,7 +471,7 @@ CONVERSATIONS = [
             ("Sarah", "Yes! Saturday at 7pm. I'll bring the cake."),
             ("Mike", "I've got the decorations. Should we invite Tom?"),
             ("Jake", "Better not. You know how he can't keep secrets."),
-            ("Sarah", "Right. The fewer people who know, the better."),
+            ("Sarah", "Right. The fewer people who know what's up, the better."),
             ("Mike", "My lips are sealed. This will be perfect!")
         ],
         "has_secret": False,
@@ -483,8 +483,8 @@ CONVERSATIONS = [
         "messages": [
             ("Detective Maria", "The suspect is in interrogation room 3."),
             ("Officer James", "Has he confessed yet?"),
-            ("Detective Maria", "Not yet. But we have enough evidence."),
-            ("Officer James", "What about his alibi?"),
+            ("Detective Maria", "Not yet. But we have enough evidence about what's up."),
+            ("Officer James", "Really? Any defense on his side?"),
             ("Detective Maria", "Doesn't check out. We've got him."),
             ("Officer James", "Good. Justice will be served.")
         ],
@@ -525,10 +525,10 @@ CONVERSATIONS = [
         "messages": [
             ("Alex", "The escape room was booked for Friday!"),
             ("Jordan", "Nice! Which theme did you pick?"),
-            ("Alex", "The prison break one. It's supposed to be hard."),
-            ("Jordan", "Perfect. We need a challenge."),
-            ("Alex", "Think we can break the record?"),
-            ("Jordan", "Let's find out!")
+            ("Alex", "Whats up"),
+            ("Jordan", "EXCUSE ME WHAT?."),
+            ("Alex", "OH MY GOD I MEANT WHATSAPP, THE THEME OF THE ESCAPE ROOM IS WHATSAPP SORRYYYY!!"),
+            ("Jordan", "Bloody idiot. Alright, we'll be there.")
         ],
         "has_secret": False,
         "secret": None
@@ -541,7 +541,7 @@ CONVERSATIONS = [
             ("Editor Dan", "Tell me about the victim."),
             ("Author Rebecca", "Found dead in chapter 3. Poisoned."),
             ("Editor Dan", "And the killer?"),
-            ("Author Rebecca", "The reader won't guess. It's the butler!"),
+            ("Author Rebecca", "The reader won't guess what's up. It's the butler!"),
             ("Editor Dan", "Classic! Love it!")
         ],
         "has_secret": False,
@@ -579,8 +579,8 @@ CONVERSATIONS = [
         "id": 33,
         "participants": ["Game Master Joel", "Player Sam"],
         "messages": [
-            ("Game Master Joel", "Your character enters the dungeon."),
-            ("Player Sam", "I want to ambush the guards."),
+            ("Game Master Joel", "Your character enters the dungeon. You are now in THE DEPARTMENT!"),
+            ("Player Sam", "I want to ambush the guards. No way I make it otherwise."),
             ("Game Master Joel", "Roll for stealth. You need above 15."),
             ("Player Sam", "Got an 18! I take them out silently."),
             ("Game Master Joel", "Success! You find a key and a secret passage."),
@@ -649,9 +649,9 @@ CONVERSATIONS = [
         "id": 38,
         "participants": ["Zoe", "Marcus"],
         "messages": [
-            ("Marcus", "Hey! What's up?"),
-            ("Zoe", "Not much! The concert tickets sold out so fast!"),
-            ("Marcus", "I know! I managed to grab two though."),
+            ("Marcus", "Hey! What's up with the concert? Did you grab any tickets?"),
+            ("Zoe", "Not much is up! I literally got none. The concert tickets sold out so fast!"),
+            ("Marcus", "I know! I managed to grab two though. You're lucky you have me."),
             ("Zoe", "You're amazing! What time should I meet you?"),
             ("Marcus", "Doors open at 7. Let's get there early."),
             ("Zoe", "Definitely. This band is incredible live!"),
@@ -717,18 +717,16 @@ CONVERSATIONS = [
         "has_secret": False,
         "secret": None
     },
-
-    # === MORE FALSE POSITIVES - "What's Up" Ambiguity ===
     {
         "id": 43,
         "participants": ["Elena", "Patricia"],
         "messages": [
             ("Elena", "Did you hear what's up with Sarah?"),
-            ("Patricia", "No, what's up?"),
-            ("Elena", "She hasn't been at work all week. Nobody knows what's up."),
-            ("Patricia", "That's strange. Did anyone ask what's up?"),
+            ("Patricia", "No, what happened?"),
+            ("Elena", "She hasn't been at work all week. Nobody knows what's up anymore."),
+            ("Patricia", "That's strange. Did anyone ask her or her boss?"),
             ("Elena", "Her manager won't say. Just says she's 'unavailable'."),
-            ("Patricia", "I hope she's okay. People disappear and nobody knows what's up anymore.")
+            ("Patricia", "I hope she's okay. People disappear a lot nowadays.")
         ],
         "has_secret": False,
         "secret": None
@@ -738,11 +736,11 @@ CONVERSATIONS = [
         "participants": ["Kevin", "Natalie"],
         "messages": [
             ("Kevin", "Hey, what's up at the office today?"),
-            ("Natalie", "Everything feels weird. Did you notice what's up?"),
-            ("Kevin", "The extra security checkpoints?"),
+            ("Natalie", "Everything feels weird. Did you notice it?"),
+            ("Kevin", "The extra security checkpoints? Hard not to notice"),
             ("Natalie", "Yeah. And some desks are empty. What's up with that?"),
-            ("Kevin", "Management isn't saying what's up. Just 'routine procedures'."),
-            ("Natalie", "I don't like not knowing what's up. Makes me nervous.")
+            ("Kevin", "Management isn't saying peep. Just 'routine procedures'."),
+            ("Natalie", "I don't like not knowing. Makes me nervous.")
         ],
         "has_secret": False,
         "secret": None
@@ -752,11 +750,11 @@ CONVERSATIONS = [
         "participants": ["Aunt Maria", "Nephew Tom"],
         "messages": [
             ("Nephew Tom", "What's up with Uncle Jim? He hasn't called in two weeks."),
-            ("Aunt Maria", "I don't know what's up. He just stopped responding."),
+            ("Aunt Maria", "I don't know. He just stopped responding."),
             ("Nephew Tom", "Did you go to his apartment?"),
-            ("Aunt Maria", "It's empty. Like he never lived there. I don't understand what's up."),
+            ("Aunt Maria", "It's empty. Like he never lived there. I don't understand what the hell is going on!"),
             ("Nephew Tom", "Should we file a missing persons report?"),
-            ("Aunt Maria", "I tried. They said 'don't worry about what's up with him'. That's all.")
+            ("Aunt Maria", "I tried. They said 'he must have left the country'. That's all.")
         ],
         "has_secret": False,
         "secret": None
@@ -765,12 +763,12 @@ CONVERSATIONS = [
         "id": 46,
         "participants": ["Neighbor Frank", "Neighbor Rita"],
         "messages": [
-            ("Neighbor Frank", "What's up in the neighborhood lately?"),
-            ("Neighbor Rita", "Too many patrols. Have you noticed what's up?"),
-            ("Neighbor Frank", "The checkpoints on every corner. What's up with that?"),
-            ("Neighbor Rita", "They say it's for security. But nobody knows what's really up."),
+            ("Neighbor Frank", "What's going on in the neighborhood lately?"),
+            ("Neighbor Rita", "Too many patrols. Have you noticed why they would be doing this?"),
+            ("Neighbor Frank", "The checkpoints on every corner. I literally have no idea, this is so weird."),
+            ("Neighbor Rita", "They say it's for security. But nobody knows what's so insecure in the first place."),
             ("Neighbor Frank", "Makes you wonder what's up, you know?"),
-            ("Neighbor Rita", "Better not to ask what's up. Safer that way.")
+            ("Neighbor Rita", "Better not to ask that I guess.")
         ],
         "has_secret": False,
         "secret": None
@@ -782,11 +780,11 @@ CONVERSATIONS = [
         "participants": ["Simon", "Rebecca"],
         "messages": [
             ("Simon", "Everyone's asking what's up these days."),
-            ("Rebecca", "I know. Nobody knows what's up anymore."),
-            ("Simon", "Have you figured out what's up yet?"),
-            ("Rebecca", "I'm trying to. But finding out what's up is dangerous."),
+            ("Rebecca", "I know. Every conversation I have starts like that. Is it a meme or something?"),
+            ("Simon", "So you haven't figured it out yet?"),
+            ("Rebecca", "What do you mean dude?"),
             ("Simon", "Maybe we shouldn't talk about what's up."),
-            ("Rebecca", "You're right. Safer not to know what's up.")
+            ("Rebecca", "You're just weird right now.")
         ],
         "has_secret": False,
         "secret": None
